@@ -7,6 +7,7 @@ gantt
     Lista de Listas :active, 2, 2025-09-16, 2025-09-18
     Lista Doble Circular :active, 1, 2025-09-16, 2025-09-18
     section Interfaz
+    Ventana-Principal :active, 3, 2025-09-16, 2025-09-21
     section Reportes
     section Documentación
 ```
