@@ -10,5 +10,6 @@ gantt
     Ventana-Principal :active, 3, 2025-09-16, 2025-09-21
     section Reportes
     section Documentación
+    Diagrama de Clases :active, 5, 2025-09-16, 2025-09-25
     Ensayo :active, 4, 2025-09-16, 2025-09-25
 ```
