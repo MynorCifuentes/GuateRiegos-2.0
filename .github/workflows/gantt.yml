@@ -7,8 +7,6 @@ permissions:
 on:
   issues:
     types: [opened, closed, edited, deleted]
-  schedule:
-    - cron: '0 */5 * * *'  # Cada 5 horas
   workflow_dispatch:
 
 jobs:
