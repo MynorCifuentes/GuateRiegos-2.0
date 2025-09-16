@@ -9,6 +9,7 @@ gantt
     section Interfaz
     Ventana-Principal :active, 3, 2025-09-16, 2025-09-21
     section Reportes
+    Reporte HTML :active, 7, 2025-09-16, 2025-09-23
     section Documentación
     Diagrama de Actividad :active, 6, 2025-09-16, 2025-09-25
     Diagrama de Clases :active, 5, 2025-09-16, 2025-09-25
