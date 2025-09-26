@@ -19,3 +19,5 @@ Thumbs.db
 # Python virtual environments
 venv/
 .env/
+# Binarios
+*.xlsx
