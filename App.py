@@ -13,6 +13,7 @@ def index():
 
 @app.route('/cargar', methods=['GET', 'POST'])
 def cargar():
+    
     if request.method == 'POST':
         archivo = request.files.get('archivo')
         if not archivo:
