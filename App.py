@@ -1,10 +1,14 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from Gestor import Gestor
 from SimuladorRiego import SimuladorRiego
 from Estructuras.ListaSimple import ListaSimple
 from Estructuras.NodoCelda import NodoCelda
+import os
 
 app = Flask(__name__)
+app.secret_key = "secret_key_123"  # Necesario para Flash
+
+# Instancias globales
 gestor = Gestor()
 cargado = False
 
@@ -20,9 +24,15 @@ def cargar():
         if "archivo" in request.files:
             archivo = request.files["archivo"]
             if archivo.filename != "":
-                archivo.save("entrada.xml")
-                ok, mensaje = gestor.leer_xml("entrada.xml")
+                ruta_guardado = os.path.join(os.getcwd(), "entrada.xml")
+                archivo.save(ruta_guardado)
+                ok, mensaje = gestor.leer_xml(ruta_guardado)
                 cargado = ok
+                if ok:
+                    flash("Archivo cargado y procesado correctamente.", "success")
+                    return redirect(url_for("simular"))
+                else:
+                    flash(f"Error: {mensaje}", "danger")
     return render_template("cargar.html", mensaje=mensaje, cargado=cargado)
 
 @app.route("/simular", methods=["GET", "POST"])
@@ -41,7 +51,7 @@ def simular():
         mensaje = "Por favor, carga una configuración primero."
         return render_template("simular.html", mensaje=mensaje, cargado=cargado)
 
-    # Construir lista de invernaderos
+    # Lista de invernaderos
     invernaderos = ListaSimple()
     actual = gestor.invernaderos.primero
     idx = 0
@@ -53,17 +63,17 @@ def simular():
             if actual == gestor.invernaderos.primero:
                 break
 
-    # Selección de invernadero
+    # Selección de invernadero y plan
     idx_inv = request.args.get("invernadero")
     idx_plan = request.args.get("plan")
-    if idx_inv is not None:
+    if idx_inv is not None and idx_inv != "":
         idx_inv = int(idx_inv)
         actual = gestor.invernaderos.primero
         for _ in range(idx_inv):
             actual = actual.siguiente
         selected_invernadero = actual
 
-        # Construir lista de planes
+        # Lista de planes
         planes = ListaSimple()
         actual_plan = selected_invernadero.info.planesRiego.primero
         idx_p = 0
@@ -72,7 +82,7 @@ def simular():
             idx_p += 1
             actual_plan = actual_plan.siguiente
 
-        if idx_plan is not None:
+        if idx_plan is not None and idx_plan != "":
             idx_plan = int(idx_plan)
             actual_plan = selected_invernadero.info.planesRiego.primero
             for _ in range(idx_plan):
@@ -100,7 +110,6 @@ def simular():
 
 @app.route("/reporte")
 def reporte():
-    # Solo indicado sin implementacion
     return render_template("reporte.html")
 
 @app.route("/ayuda")

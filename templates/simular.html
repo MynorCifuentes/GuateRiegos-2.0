@@ -5,13 +5,20 @@
 {% block content %}
 <h2>Simulación de riego</h2>
 <p>Aquí podrás simular el proceso de riego.</p>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }} mt-2">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
 {% if mensaje %}
     <div class="alert alert-info">{{ mensaje }}</div>
 {% endif %}
 
 {% if not cargado %}
     <h3>Sube tu archivo XML de entrada:</h3>
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" action="{{ url_for('cargar') }}">
         <input type="file" name="archivo" accept=".xml" required>
         <button type="submit" class="btn btn-primary">Cargar</button>
     </form>
@@ -22,33 +29,35 @@
             <option value="">-- Selecciona --</option>
             {% set actual = invernaderos.primero %}
             {% for _ in range(0, 1000) %}
-                {% if not actual %}
-                    {% break %}
-                {% endif %}
-                <option value="{{actual.info[1]}}" {% if selected_invernadero==actual.info[1]|string %}selected{% endif %}>
-                    {{actual.info[0]}}
-                </option>
-                {% set actual = actual.siguiente %}
-                {% if actual == invernaderos.primero %}
-                    {% break %}
+                {% if actual %}
+                    <option value="{{actual.info[1]}}" {% if selected_invernadero==actual.info[1]|string %}selected{% endif %}>
+                        {{actual.info[0]}}
+                    </option>
+                    {% set siguiente = actual.siguiente %}
+                    {% if siguiente == invernaderos.primero %}
+                        {% set actual = None %}
+                    {% else %}
+                        {% set actual = siguiente %}
+                    {% endif %}
                 {% endif %}
             {% endfor %}
         </select>
-        {% if selected_invernadero is not none %}
+        {% if selected_invernadero is not none and selected_invernadero != "" %}
             <label for="plan">Plan de riego:</label>
             <select name="plan" id="plan" onchange="this.form.submit()" class="form-select mb-2">
                 <option value="">-- Selecciona --</option>
                 {% set actual = planes.primero %}
                 {% for _ in range(0, 1000) %}
-                    {% if not actual %}
-                        {% break %}
-                    {% endif %}
-                    <option value="{{actual.info[1]}}" {% if selected_plan==actual.info[1]|string %}selected{% endif %}>
-                        {{actual.info[0]}}
-                    </option>
-                    {% set actual = actual.siguiente %}
-                    {% if actual == planes.primero %}
-                        {% break %}
+                    {% if actual %}
+                        <option value="{{actual.info[1]}}" {% if selected_plan==actual.info[1]|string %}selected{% endif %}>
+                            {{actual.info[0]}}
+                        </option>
+                        {% set siguiente = actual.siguiente %}
+                        {% if siguiente == planes.primero %}
+                            {% set actual = None %}
+                        {% else %}
+                            {% set actual = siguiente %}
+                        {% endif %}
                     {% endif %}
                 {% endfor %}
             </select>
@@ -61,13 +70,14 @@
         <ul>
             {% set actual = consumos.primero %}
             {% for _ in range(0, 1000) %}
-                {% if not actual %}
-                    {% break %}
-                {% endif %}
-                <li>{{ actual.info }}</li>
-                {% set actual = actual.siguiente %}
-                {% if actual == consumos.primero %}
-                    {% break %}
+                {% if actual %}
+                    <li>{{ actual.info }}</li>
+                    {% set siguiente = actual.siguiente %}
+                    {% if siguiente == consumos.primero %}
+                        {% set actual = None %}
+                    {% else %}
+                        {% set actual = siguiente %}
+                    {% endif %}
                 {% endif %}
             {% endfor %}
         </ul>
@@ -75,13 +85,14 @@
         <pre>
 {% set actual = log.primero %}
 {% for _ in range(0, 1000) %}
-    {% if not actual %}
-        {% break %}
-    {% endif %}
-    {{ actual.info }}
-    {% set actual = actual.siguiente %}
-    {% if actual == log.primero %}
-        {% break %}
+    {% if actual %}
+        {{ actual.info }}
+        {% set siguiente = actual.siguiente %}
+        {% if siguiente == log.primero %}
+            {% set actual = None %}
+        {% else %}
+            {% set actual = siguiente %}
+        {% endif %}
     {% endif %}
 {% endfor %}
         </pre>
