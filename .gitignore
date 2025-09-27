@@ -18,6 +18,8 @@ Thumbs.db
 
 # Python virtual environments
 venv/
-.env/
+*.env/
+*.venv
+.venv/
 # Binarios
 *.xlsx
