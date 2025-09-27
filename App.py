@@ -1,87 +1,111 @@
-from flask import Flask, request, render_template, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for
 from Gestor import Gestor
-import os
+from SimuladorRiego import SimuladorRiego
+from Estructuras.ListaSimple import ListaSimple
+from Estructuras.NodoCelda import NodoCelda
 
 app = Flask(__name__)
-app.secret_key = 'super-secret-key'  # Necesario para mensajes flash
-
 gestor = Gestor()
+cargado = False
 
-@app.route('/')
+@app.route("/")
 def index():
-    return render_template('index.html')
+    return render_template("index.html")
 
-@app.route('/cargar', methods=['GET', 'POST'])
+@app.route("/cargar", methods=["GET", "POST"])
 def cargar():
-    
-    if request.method == 'POST':
-        archivo = request.files.get('archivo')
-        if not archivo:
-            flash('No se recibió el archivo', 'danger')
-            return redirect(url_for('cargar'))
-        ruta = os.path.join('./', archivo.filename)
-        archivo.save(ruta)
-        exito, mensaje = gestor.leer_xml(ruta)[:2]
-        if exito:
-            flash(mensaje, 'success')
-        else:
-            flash(mensaje, 'danger')
-        return redirect(url_for('cargar'))
-    return render_template('cargar.html')
+    global cargado
+    mensaje = ""
+    if request.method == "POST":
+        if "archivo" in request.files:
+            archivo = request.files["archivo"]
+            if archivo.filename != "":
+                archivo.save("entrada.xml")
+                ok, mensaje = gestor.leer_xml("entrada.xml")
+                cargado = ok
+    return render_template("cargar.html", mensaje=mensaje, cargado=cargado)
 
-@app.route('/simular')
+@app.route("/simular", methods=["GET", "POST"])
 def simular():
-    return render_template('simular.html')
+    global cargado
+    mensaje = ""
+    invernaderos = None
+    planes = None
+    selected_invernadero = None
+    selected_plan = None
+    resultado = None
+    log = None
+    consumos = None
 
-@app.route('/reporte')
-def reporte():
-    return render_template('reporte.html')
+    if not cargado:
+        mensaje = "Por favor, carga una configuración primero."
+        return render_template("simular.html", mensaje=mensaje, cargado=cargado)
 
-@app.route('/ayuda')
-def ayuda():
-    return render_template('ayuda.html')
-
-@app.route('/mostrar-drones', methods=['GET'])
-def mostrar_drones():
-    import io, sys
-    buffer = io.StringIO()
-    sys.stdout = buffer
-    gestor.mostrar_drones()
-    sys.stdout = sys.__stdout__
-    return buffer.getvalue(), 200
-
-@app.route('/mostrar-invernaderos', methods=['GET'])
-def mostrar_invernaderos():
-    import io, sys
-    buffer = io.StringIO()
-    sys.stdout = buffer
-    gestor.mostrar_invernaderos()
-    sys.stdout = sys.__stdout__
-    return buffer.getvalue(), 200
-
-@app.route('/mostrar-plantas-por-hilera/<int:idx>', methods=['GET'])
-def mostrar_plantas_por_hilera(idx):
-    import io, sys
-    buffer = io.StringIO()
-    sys.stdout = buffer
+    # Construir lista de invernaderos
+    invernaderos = ListaSimple()
     actual = gestor.invernaderos.primero
-    contador = 0
-    encontrado = None
+    idx = 0
     if actual:
         while True:
-            if contador == idx:
-                encontrado = actual
-                break
+            invernaderos.insertar(NodoCelda((actual.info.nombre, idx)))
+            idx += 1
             actual = actual.siguiente
-            contador += 1
             if actual == gestor.invernaderos.primero:
                 break
-    if encontrado:
-        gestor.mostrar_plantas_por_hilera(encontrado)
-    else:
-        print("No existe ese invernadero")
-    sys.stdout = sys.__stdout__
-    return buffer.getvalue(), 200
 
-if __name__ == '__main__':
+    # Selección de invernadero
+    idx_inv = request.args.get("invernadero")
+    idx_plan = request.args.get("plan")
+    if idx_inv is not None:
+        idx_inv = int(idx_inv)
+        actual = gestor.invernaderos.primero
+        for _ in range(idx_inv):
+            actual = actual.siguiente
+        selected_invernadero = actual
+
+        # Construir lista de planes
+        planes = ListaSimple()
+        actual_plan = selected_invernadero.info.planesRiego.primero
+        idx_p = 0
+        while actual_plan:
+            planes.insertar(NodoCelda((actual_plan.info.nombre, idx_p)))
+            idx_p += 1
+            actual_plan = actual_plan.siguiente
+
+        if idx_plan is not None:
+            idx_plan = int(idx_plan)
+            actual_plan = selected_invernadero.info.planesRiego.primero
+            for _ in range(idx_plan):
+                actual_plan = actual_plan.siguiente
+            selected_plan = actual_plan
+
+            simulador = SimuladorRiego(gestor, selected_invernadero.info, selected_plan.info)
+            simulador.simular()
+            resultado = simulador.resumen()
+            log = simulador.obtener_log()
+            consumos = simulador.obtener_consumo()
+
+    return render_template(
+        "simular.html",
+        mensaje=mensaje,
+        cargado=cargado,
+        invernaderos=invernaderos,
+        planes=planes,
+        selected_invernadero=idx_inv,
+        selected_plan=idx_plan,
+        resultado=resultado,
+        log=log,
+        consumos=consumos
+    )
+
+@app.route("/reporte")
+def reporte():
+    # Solo indicado sin implementacion
+    return render_template("reporte.html")
+
+@app.route("/ayuda")
+def ayuda():
+    return render_template("ayuda.html")
+
+if __name__ == "__main__":
     app.run(debug=True)
