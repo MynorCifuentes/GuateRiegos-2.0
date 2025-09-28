@@ -1,11 +1,7 @@
 class Planta:
-    def __init__(self, hilera, posicion, litrosAgua, gramosFertilizante, tipo):
+    def __init__(self, hilera, posicion, litros_agua, gramos_fertilizante, nombre):
         self.hilera = hilera
         self.posicion = posicion
-        self.litrosAgua = litrosAgua
-        self.gramosFertilizante = gramosFertilizante
-        self.tipo = tipo
-
-    def __str__(self):
-        return (f"Planta(hilera={self.hilera}, posicion={self.posicion}, litrosAgua={self.litrosAgua}, "
-                f"gramosFertilizante={self.gramosFertilizante}, tipo={self.tipo})")
+        self.litros_agua = litros_agua
+        self.gramos_fertilizante = gramos_fertilizante
+        self.nombre = nombre
