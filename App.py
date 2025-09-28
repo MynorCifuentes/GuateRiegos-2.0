@@ -1,181 +1,114 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, send_file
+import os
+from flask import Flask, render_template, redirect, url_for, request, flash
+from werkzeug.utils import secure_filename
 from Gestor import Gestor
 from SimuladorRiego import SimuladorRiego
-from Estructuras.ListaSimple import ListaSimple
-from Estructuras.NodoCelda import NodoCelda
-import os
+
+UPLOAD_FOLDER = 'uploads'
+ALLOWED_EXTENSIONS = {'xml'}
 
 app = Flask(__name__)
-app.secret_key = "secret_key_123"
+app.secret_key = 'guateriegos-secret'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-gestor = None
-cargado = False
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+DEFAULT_XML = 'entrada.xml'
+GESTOR = Gestor(DEFAULT_XML)
 
-def contar_nodos(lista):
-    """Cuenta los nodos en una lista."""
-    contador = 0
-    actual = lista.primero
-    while actual:
-        contador += 1
-        actual = actual.siguiente
-    return contador
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@app.route("/")
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template("index.html", cargado=cargado)
-
-@app.route("/ayuda")
-def ayuda():
-    return render_template("ayuda.html")
-
-@app.route("/cargar", methods=["GET", "POST"])
-def cargar():
-    global gestor, cargado
-    mensaje = ""
-    
-    if request.method == "POST":
-        if "archivo" not in request.files:
-            flash("No se seleccionó ningún archivo", "error")
+    global GESTOR
+    if request.method == 'POST':
+        if 'archivo_xml' not in request.files:
+            flash('No se seleccionó ningún archivo.', 'danger')
             return redirect(request.url)
-            
-        archivo = request.files["archivo"]
-        if archivo.filename == "":
-            flash("No se seleccionó ningún archivo", "error")
+        file = request.files['archivo_xml']
+        if file.filename == '':
+            flash('No se seleccionó ningún archivo.', 'danger')
             return redirect(request.url)
-            
-        if archivo and archivo.filename.endswith('.xml'):
-            gestor = Gestor()
-            ruta_guardado = os.path.join(os.getcwd(), "entrada.xml")
-            archivo.save(ruta_guardado)
-            ok, mensaje = gestor.leer_xml(ruta_guardado)
-            cargado = ok
-            if ok:
-                flash("Archivo cargado exitosamente", "success")
-                return redirect(url_for("simular"))
-            else:
-                flash(f"Error al cargar archivo: {mensaje}", "error")
-    
-    return render_template("cargar.html", mensaje=mensaje, cargado=cargado)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(path)
+            GESTOR = Gestor(path)
+            flash(f'Archivo "{filename}" cargado con éxito.', 'success')
+            return redirect(url_for('index'))
+        else:
+            flash('Solo se permiten archivos XML.', 'danger')
+            return redirect(request.url)
 
-@app.route("/simular")
-def simular():
-    if not cargado or not gestor:
-        flash("No hay datos cargados para simular", "warning")
-        return redirect(url_for("index"))
+    # NO listas nativas, solo ListaSimple
+    invernaderos = GESTOR.invernaderos
+    return render_template('index.html', invernaderos=invernaderos)
 
-    # Obtener parámetros de la URL
-    selected_inv_id = request.args.get("invernadero")
-    selected_plan_id = request.args.get("plan")
-    
-    # Crear lista de invernaderos para mostrar
-    invernaderos_vista = ListaSimple()
-    actual = gestor.invernaderos.primero
-    if actual:
-        first = actual
-        seen_names = set()  # Evitar duplicados
-        indice = 0
-        while True:
-            if actual.info.nombre not in seen_names:
-                invernaderos_vista.insertar(NodoCelda((actual.info.nombre, indice)))
-                seen_names.add(actual.info.nombre)
-            actual = actual.siguiente
-            indice += 1
-            if actual == first:
+@app.route('/invernadero/<nombre>', methods=['GET', 'POST'])
+def detalle_invernadero(nombre):
+    actual = GESTOR.invernaderos.primero
+    invernadero = None
+    while actual:
+        if actual.dato.nombre == nombre:
+            invernadero = actual.dato
+            break
+        actual = actual.siguiente
+    if not invernadero:
+        flash('Invernadero no encontrado.', 'danger')
+        return redirect(url_for('index'))
+
+    plan_seleccionado = None
+    if request.method == 'POST':
+        plan_nombre = request.form.get("plan_seleccionado")
+        actual_plan = invernadero.planes_riego.primero
+        while actual_plan:
+            if actual_plan.dato.nombre == plan_nombre:
+                plan_seleccionado = actual_plan.dato
                 break
-    
-    # Si se seleccionó un invernadero
-    invernadero_actual = None
-    planes_vista = None
-    resultado = None
-    log_lista = None
-    consumos_lista = None
-    
-    if selected_inv_id is not None and selected_inv_id != "":
-        # Encontrar el invernadero seleccionado
-        actual = gestor.invernaderos.primero
-        for _ in range(int(selected_inv_id)):
-            actual = actual.siguiente
-        invernadero_actual = actual.info
-        
-        # Crear lista de planes para el invernadero seleccionado
-        planes_vista = ListaSimple()
-        plan_actual = invernadero_actual.planesRiego.primero
-        indice = 0
-        planes_registrados = set()  # Evitar duplicados
-        while plan_actual:
-            if plan_actual.info.nombre not in planes_registrados:
-                planes_vista.insertar(NodoCelda((plan_actual.info.nombre, indice)))
-                planes_registrados.add(plan_actual.info.nombre)
-            plan_actual = plan_actual.siguiente
-            indice += 1
-        
-        # Si se seleccionó un plan
-        if selected_plan_id is not None and selected_plan_id != "":
-            # Encontrar el plan seleccionado
-            plan_actual = invernadero_actual.planesRiego.primero
-            for _ in range(int(selected_plan_id)):
-                plan_actual = plan_actual.siguiente
-            
-            # Simular el plan
-            simulador = SimuladorRiego(gestor, invernadero_actual, plan_actual.info)
-            simulador.simular()
-            
-            # Guardar resultados
-            resultado = f"Simulación completada en {simulador.tiempo_total} segundos"
-            log_lista = simulador.log
-            
-            # Generar lista de consumos
-            consumos_lista = ListaSimple()
-            asignacion = invernadero_actual.asignacionDrones.primero
-            while asignacion:
-                dron = simulador.buscar_dron_objeto(asignacion.info.id_dron)
-                if dron:
-                    info = f"Dron {dron.nombre}: {dron.agua_usada}L agua, {dron.fertilizante_usado}g fertilizante"
-                    consumos_lista.insertar(NodoCelda(info))
-                asignacion = asignacion.siguiente
+            actual_plan = actual_plan.siguiente
+        if plan_seleccionado:
+            return redirect(url_for('simular', nombre_invernadero=nombre, nombre_plan=plan_nombre))
 
-    return render_template("simular.html",
-        cargado=cargado,
-        invernaderos=invernaderos_vista,
-        invernaderos_len=contar_nodos(invernaderos_vista),
-        planes=planes_vista,
-        planes_len=contar_nodos(planes_vista) if planes_vista else 0,
-        selected_invernadero=selected_inv_id,
-        selected_plan=selected_plan_id,
-        resultado=resultado,
-        log=log_lista,
-        log_len=contar_nodos(log_lista) if log_lista else 0,
-        consumos=consumos_lista,
-        consumos_len=contar_nodos(consumos_lista) if consumos_lista else 0
-    )
+    return render_template('invernadero.html', invernadero=invernadero)
 
-@app.route("/reporte")
-def reporte():
-    if not cargado or not gestor:
-        flash("No hay datos cargados para generar el reporte", "warning")
-        return redirect(url_for("index"))
+@app.route('/simular/<nombre_invernadero>/<nombre_plan>')
+def simular(nombre_invernadero, nombre_plan):
+    actual = GESTOR.invernaderos.primero
+    invernadero = None
+    while actual:
+        if actual.dato.nombre == nombre_invernadero:
+            invernadero = actual.dato
+            break
+        actual = actual.siguiente
+    if not invernadero:
+        flash('Invernadero no encontrado.', 'danger')
+        return redirect(url_for('index'))
 
-    # Generar reporte
-    with open("ReporteInvernaderos.html", "w", encoding="utf-8") as f:
-        f.write("<html><head><title>Reporte</title></head><body>")
-        f.write("<h1>Reporte de Invernaderos</h1>")
+    actual_plan = invernadero.planes_riego.primero
+    plan = None
+    while actual_plan:
+        if actual_plan.dato.nombre == nombre_plan:
+            plan = actual_plan.dato
+            break
+        actual_plan = actual_plan.siguiente
+    if not plan:
+        flash('Plan de riego no encontrado.', 'danger')
+        return redirect(url_for('detalle_invernadero', nombre=nombre_invernadero))
 
-        actual = gestor.invernaderos.primero
-        if actual:
-            first = actual
-            while True:
-                f.write(f"<h2>Invernadero: {actual.info.nombre}</h2>")
-                plan_actual = actual.info.planesRiego.primero
-                while plan_actual:
-                    f.write(f"<h3>Plan: {plan_actual.info.nombre}</h3>")
-                    plan_actual = plan_actual.siguiente
-                actual = actual.siguiente
-                if actual == first:
-                    break
-        
-        f.write("</body></html>")
-    
-    return send_file("ReporteInvernaderos.html")
+    simulador = SimuladorRiego(invernadero, plan)
+    simulador.simular()
+    instrucciones = simulador.get_instrucciones()     # ListaSimple de ListaSimple de (dron_id, accion)
+    estadisticas = simulador.get_estadisticas()       # ListaSimple de EstadisticaDron
+    tiempo_total = simulador.tiempo_total
 
-if __name__ == '__main__':
+    # PASAMOS SOLO ListaSimple's, NUNCA listas nativas
+    return render_template('simulacion.html',
+                           invernadero=invernadero,
+                           plan=plan,
+                           instrucciones=instrucciones,
+                           estadisticas=estadisticas,
+                           tiempo_total=tiempo_total)
+
+if __name__ == "__main__":
     app.run(debug=True)

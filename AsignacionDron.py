@@ -1,7 +1,4 @@
 class AsignacionDron:
-    def __init__(self, id_dron, hilera):
-        self.id_dron = id_dron
+    def __init__(self, dron_id, hilera):
+        self.dron_id = dron_id
         self.hilera = hilera
-
-    def __str__(self):
-        return f"AsignacionDron(id_dron={self.id_dron}, hilera={self.hilera})"

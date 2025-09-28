@@ -1,7 +1,4 @@
 class PlanRiego:
-    def __init__(self, nombre, secuencia):
+    def __init__(self, nombre, patron):
         self.nombre = nombre
-        self.secuencia = secuencia
-
-    def __str__(self):
-        return f"PlanRiego(nombre={self.nombre}, secuencia={self.secuencia})"
+        self.patron = patron # Ejemplo: "H1-P2, H2-P1"

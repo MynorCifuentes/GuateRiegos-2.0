@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Simulación - {{ invernadero.nombre }} | GuateRiegos 2.0{% endblock %}
+{% block content %}
+<a href="{{ url_for('detalle_invernadero', nombre=invernadero.nombre) }}" class="btn btn-outline-success mb-3">&larr; Volver al invernadero</a>
+<h2>Simulación: {{ invernadero.nombre }} - {{ plan.nombre }}</h2>
+
+<h4>Tabla de instrucciones por tiempo:</h4>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Tiempo (s)</th>
+            {% for dron_id, _ in instrucciones[0] %}
+                <th>Dron {{ dron_id }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+    {% for fila in instrucciones %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            {% for dron_id, accion in fila %}
+                <td>{{ accion }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<h4>Estadísticas por dron:</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Dron</th>
+            <th>Litros de agua</th>
+            <th>Gramos de fertilizante</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for stat in estadisticas %}
+        <tr>
+            <td>{{ stat.dron_id }}</td>
+            <td>{{ stat.litros_agua }}</td>
+            <td>{{ stat.gramos_fertilizante }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<div class="alert alert-info">Tiempo óptimo para regado: <strong>{{ tiempo_total }}</strong> segundos</div>
+{% endblock %}

@@ -1,14 +1,26 @@
 {% extends "base.html" %}
+{% block title %}Inicio | GuateRiegos 2.0{% endblock %}
 {% block content %}
-<div class="jumbotron">
-    <h2>Bienvenido al Sistema de Riego Automatizado</h2>
-    <p class="lead">Este sistema permite gestionar y simular planes de riego para invernaderos.</p>
-    {% if not cargado %}
-        <p>Para comenzar, carga un archivo de configuración XML.</p>
-        <a href="{{ url_for('cargar') }}" class="btn btn-primary">Cargar archivo XML</a>
-    {% else %}
-        <p>Archivo cargado. Puedes proceder a simular.</p>
-        <a href="{{ url_for('simular') }}" class="btn btn-warning">Ir a simulación</a>
-    {% endif %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h2 class="mb-4">Invernaderos disponibles</h2>
+        <form method="post" enctype="multipart/form-data" class="mb-4">
+            <div class="input-group">
+                <input type="file" name="archivo_xml" accept=".xml" class="form-control" required>
+                <button type="submit" class="btn btn-success">Cargar configuración XML</button>
+            </div>
+        </form>
+        {% if invernaderos %}
+        <div class="list-group">
+            {% for inv in invernaderos %}
+                <a href="{{ url_for('detalle_invernadero', nombre=inv.nombre) }}" class="list-group-item list-group-item-action">
+                    <strong>{{ inv.nombre }}</strong> &mdash; {{ inv.numero_hileras }} hileras, {{ inv.plantas_x_hilera }} plantas/hilera
+                </a>
+            {% endfor %}
+        </div>
+        {% else %}
+            <div class="alert alert-warning">No hay invernaderos cargados.</div>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}

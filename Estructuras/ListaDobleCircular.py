@@ -1,4 +1,4 @@
-from Estructuras.NodoCelda import NodoCelda
+from Estructuras.Nodo import Nodo
 
 class ListaDobleCircular:
     def __init__(self):
