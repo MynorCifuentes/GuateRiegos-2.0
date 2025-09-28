@@ -7,7 +7,7 @@ gantt
     Lista de Listas :done, 2, 2025-09-16, 2025-09-18
     Lista Doble Circular :done, 1, 2025-09-16, 2025-09-18
     section Interfaz
-    Ventana-Principal :active, 3, 2025-09-16, 2025-09-21
+    Ventana-Principal :done, 3, 2025-09-16, 2025-09-21
     section Reportes
     Reporte Graphviz :active, 8, 2025-09-16, 2025-09-23
     Reporte HTML :active, 7, 2025-09-16, 2025-09-23
