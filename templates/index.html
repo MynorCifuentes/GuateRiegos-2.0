@@ -1,7 +1,14 @@
 {% extends "base.html" %}
-
-{% block title %}Inicio | GuateRiegos 2.0{% endblock %}
-
 {% block content %}
-<p>Bienvenido al sistema GuateRiegos 2.0. Selecciona una opción del menú para comenzar.</p>
+<div class="jumbotron">
+    <h2>Bienvenido al Sistema de Riego Automatizado</h2>
+    <p class="lead">Este sistema permite gestionar y simular planes de riego para invernaderos.</p>
+    {% if not cargado %}
+        <p>Para comenzar, carga un archivo de configuración XML.</p>
+        <a href="{{ url_for('cargar') }}" class="btn btn-primary">Cargar archivo XML</a>
+    {% else %}
+        <p>Archivo cargado. Puedes proceder a simular.</p>
+        <a href="{{ url_for('simular') }}" class="btn btn-warning">Ir a simulación</a>
+    {% endif %}
+</div>
 {% endblock %}

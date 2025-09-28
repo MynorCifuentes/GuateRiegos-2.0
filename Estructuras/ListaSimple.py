@@ -1,20 +1,20 @@
-from Estructuras.NodoCelda import NodoCelda
-
 class ListaSimple:
     def __init__(self):
         self.primero = None
-
-    def insertar(self, nodo_celda):
+        
+    def insertar(self, nuevo_nodo):
         if not self.primero:
-            self.primero = nodo_celda
+            self.primero = nuevo_nodo
         else:
             actual = self.primero
             while actual.siguiente:
                 actual = actual.siguiente
-            actual.siguiente = nodo_celda
-
-    def __iter__(self):
+            actual.siguiente = nuevo_nodo
+            
+    def contar_nodos(self):
+        contador = 0
         actual = self.primero
         while actual:
-            yield actual
+            contador += 1
             actual = actual.siguiente
+        return contador
