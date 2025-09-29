@@ -6,12 +6,16 @@
     <h4>Invernadero: {{ invernadero.nombre }}</h4>
     <h5>Plan: {{ plan.nombre }}</h5>
     <p><b>Tiempo óptimo:</b> {{ tiempo_total }} segundos</p>
+    
     <h5>Eficiencia de Drones</h5>
     <ul>
         {% for estadistica in estadisticas %}
         <li>Dron {{ estadistica.dron_id }}: {{ estadistica.litros_agua }} litros de agua, {{ estadistica.gramos_fertilizante }} gramos de fertilizante</li>
+        {% else %}
+        <li>No hay drones asignados.</li>
         {% endfor %}
     </ul>
+    
     <h5>Instrucciones por Tiempo</h5>
     <table class="table table-sm table-striped">
         <thead>
@@ -35,10 +39,12 @@
         {% endfor %}
         </tbody>
     </table>
+
     <a href="{{ url_for('reporte', nombre_invernadero=invernadero.nombre, nombre_plan=plan.nombre) }}" class="btn btn-warning mt-2">Ver reporte detallado</a>
+    <a href="{{ url_for('graficar_tda', nombre_invernadero=invernadero.nombre, nombre_plan=plan.nombre) }}" class="btn btn-success mt-2">Ver grafo de TDAs en tiempo t</a>
     <a href="{{ url_for('index') }}" class="btn btn-secondary mt-2">Regresar</a>
 
-    <!-- Sección para definir tiempo "t" y mostrar estado de los TDAs -->
+    <!-- Opcional: Sección para definir tiempo "t" y mostrar estado de los TDAs en ese momento -->
     <div class="mt-4">
         <form method="GET" action="">
             <label for="tiempo_t">Visualizar estado en tiempo t (segundos):</label>
@@ -71,4 +77,4 @@
         {% endif %}
     </div>
 </div>
-{% endblock %}
+{% endblock %}  

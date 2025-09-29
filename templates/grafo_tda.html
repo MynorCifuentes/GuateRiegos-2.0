@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Estado de TDAs en t{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Gráfico de TDAs en tiempo t</h2>
+    <form method="POST">
+        <label for="tiempo_t">Tiempo t (segundos):</label>
+        <input type="number" name="tiempo_t" id="tiempo_t" min="1" value="{{ tiempo or 1 }}">
+        <button type="submit" class="btn btn-info">Generar grafo</button>
+    </form>
+    {% if grafo_url %}
+        <div class="mt-4">
+            <img src="{{ grafo_url }}?{{ tiempo }}" alt="Grafo de TDAs">
+        </div>
+    {% endif %}
+    <a href="{{ url_for('simular', nombre_invernadero=nombre_invernadero, nombre_plan=nombre_plan) }}" class="btn btn-secondary mt-3">Regresar</a>
+</div>
+{% endblock %}

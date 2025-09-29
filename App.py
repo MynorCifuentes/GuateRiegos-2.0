@@ -3,6 +3,7 @@ from flask import Flask, render_template, redirect, url_for, request, flash, sen
 from werkzeug.utils import secure_filename
 from Gestor import Gestor
 from SimuladorRiego import SimuladorRiego
+from graficar_tda import graficar_tda_simulador
 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'xml'}
@@ -154,6 +155,38 @@ def generar_salida():
     generar_salida_xml(GESTOR, archivo)
     flash("Archivo de salida generado correctamente.", "success")
     return send_file(archivo, as_attachment=True)
+
+@app.route('/graficar_tda/<nombre_invernadero>/<nombre_plan>', methods=['GET', 'POST'])
+def graficar_tda(nombre_invernadero, nombre_plan):
+    actual = GESTOR.invernaderos.primero
+    invernadero = None
+    while actual:
+        if actual.dato.nombre == nombre_invernadero:
+            invernadero = actual.dato
+            break
+        actual = actual.siguiente
+    if not invernadero:
+        flash('Invernadero no encontrado.', 'danger')
+        return redirect(url_for('index'))
+    actual_plan = invernadero.planes_riego.primero
+    plan = None
+    while actual_plan:
+        if actual_plan.dato.nombre == nombre_plan:
+            plan = actual_plan.dato
+            break
+        actual_plan = actual_plan.siguiente
+    if not plan:
+        flash('Plan de riego no encontrado.', 'danger')
+        return redirect(url_for('detalle_invernadero', nombre=nombre_invernadero))
+
+    if request.method == 'POST':
+        tiempo = int(request.form.get('tiempo_t', 1))
+        simulador = SimuladorRiego(invernadero, plan)
+        simulador.simular()
+        graficar_tda_simulador(simulador, tiempo)
+        return render_template('grafo_tda.html', nombre_invernadero=nombre_invernadero, nombre_plan=nombre_plan, tiempo=tiempo, grafo_url='/static/grafo_tda.png')
+    return render_template('grafo_tda.html', nombre_invernadero=nombre_invernadero, nombre_plan=nombre_plan)
+
 
 @app.route('/ayuda')
 def ayuda():
