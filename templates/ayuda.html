@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block title %}Ayuda{% endblock %}
 {% block content %}
-<div class="container mt-4">
-    <h2>Ayuda</h2>
+<div class="container mt-4 bg-white p-4 rounded shadow">
+    <h2 class="mb-4" style="color:#800000;">Ayuda</h2>
     <h5>Información del estudiante</h5>
     <ul>
         <li><b>Nombre:</b> Mynor Cifuentes</li>
@@ -19,9 +19,9 @@
         <li>Accede a reportes detallados y define el tiempo <i>t</i> para analizar el estado en un momento específico.</li>
     </ol>
     <h5>Documentación</h5>
-    <a href="https://github.com/MynorCifuentes/IPC2_Proyecto2_201318644" target="_blank">Ver documentación en GitHub</a>
+    <a href="https://github.com/MynorCifuentes/IPC2_Proyecto2_201318644" target="_blank" class="btn btn-corinto">Ver documentación en GitHub</a>
     <div class="mt-4">
-        <a href="{{ url_for('index') }}" class="btn btn-secondary">Regresar</a>
+        <a href="{{ url_for('index') }}" class="btn btn-verde-oscuro">Regresar</a>
     </div>
 </div>
 {% endblock %}

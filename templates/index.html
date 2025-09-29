@@ -1,22 +1,22 @@
 {% extends "base.html" %}
 {% block title %}Inicio{% endblock %}
 {% block content %}
-<div class="container mt-4">
-    <h2>Simulador de Riego Automatizado</h2>
+<div class="container mt-4 bg-white p-4 rounded shadow">
+    <h2 class="mb-4" style="color:#800000;">Simulador de Riego Automatizado</h2>
     <form method="POST" enctype="multipart/form-data" class="mb-4">
         <div class="form-group">
-            <label for="archivo_xml">Cargar archivo XML:</label>
+            <label for="archivo_xml"><b>Cargar archivo XML:</b></label>
             <input type="file" id="archivo_xml" name="archivo_xml" class="form-control-file" accept=".xml" required>
         </div>
-        <button type="submit" class="btn btn-success mt-2">Cargar</button>
+        <button type="submit" class="btn btn-verde-oscuro mt-2">Cargar</button>
     </form>
-    <a href="{{ url_for('generar_salida') }}" class="btn btn-primary mb-3">Generar y descargar archivo de salida XML</a>
+    <a href="{{ url_for('generar_salida') }}" class="btn btn-corinto mb-3">Generar y descargar archivo de salida XML</a>
     <a href="{{ url_for('ayuda') }}" class="btn btn-info mb-3">Ayuda</a>
-    <h4>Invernaderos disponibles</h4>
+    <h4 class="mt-4" style="color:#013220;">Invernaderos disponibles</h4>
     <ul class="list-group">
         {% for inv in invernaderos %}
             <li class="list-group-item">
-                <a href="{{ url_for('detalle_invernadero', nombre=inv.nombre) }}">{{ inv.nombre }}</a>
+                <a href="{{ url_for('detalle_invernadero', nombre=inv.nombre) }}" style="color:#800000;">{{ inv.nombre }}</a>
             </li>
         {% else %}
             <li class="list-group-item">No hay invernaderos cargados.</li>

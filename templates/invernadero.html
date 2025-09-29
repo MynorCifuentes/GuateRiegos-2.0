@@ -1,34 +1,35 @@
 {% extends "base.html" %}
 {% block title %}{{ invernadero.nombre }} | GuateRiegos 2.0{% endblock %}
 {% block content %}
-<a href="{{ url_for('index') }}" class="btn btn-outline-success mb-3">&larr; Volver al inicio</a>
-<h2>{{ invernadero.nombre }}</h2>
-<ul class="list-group mb-4">
-    <li class="list-group-item">Hileras: <strong>{{ invernadero.numero_hileras }}</strong></li>
-    <li class="list-group-item">Plantas por hilera: <strong>{{ invernadero.plantas_x_hilera }}</strong></li>
-</ul>
-<h4>Seleccionar plan de riego para simular:</h4>
-<form method="post" class="mb-4">
-    <div class="input-group mb-2">
-        <select class="form-select" name="plan_seleccionado" required>
-            {% for plan in invernadero.planes_riego %}
-                <option value="{{ plan.nombre }}">{{ plan.nombre }}</option>
-            {% endfor %}
-        </select>
-        <button type="submit" class="btn btn-success">Simular</button>
-    </div>
-</form>
+<div class="container bg-white p-4 rounded shadow mt-4">
+    <a href="{{ url_for('index') }}" class="btn btn-verde-oscuro mb-3">&larr; Volver al inicio</a>
+    <h2 class="mb-3" style="color:#800000;">{{ invernadero.nombre }}</h2>
+    <ul class="list-group mb-4">
+        <li class="list-group-item">Hileras: <strong>{{ invernadero.numero_hileras }}</strong></li>
+        <li class="list-group-item">Plantas por hilera: <strong>{{ invernadero.plantas_x_hilera }}</strong></li>
+    </ul>
+    <h4 class="mt-3" style="color:#013220;">Seleccionar plan de riego para simular:</h4>
+    <form method="post" class="mb-4">
+        <div class="input-group mb-2">
+            <select class="form-select" name="plan_seleccionado" required>
+                {% for plan in invernadero.planes_riego %}
+                    <option value="{{ plan.nombre }}">{{ plan.nombre }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn btn-corinto">Simular</button>
+        </div>
+    </form>
+    <h4>Plantas:</h4>
+    <!-- igual que antes... -->
 
-<h4>Plantas:</h4>
-<!-- igual que antes... -->
-
-<h4>Planes de Riego:</h4>
-<ul class="list-group mb-4">
-    {% for plan in invernadero.planes_riego %}
-        <li class="list-group-item">
-            <strong>{{ plan.nombre }}</strong>: {{ plan.patron }}
-        </li>
-    {% endfor %}
-</ul>
-<!-- ... -->
+    <h4>Planes de Riego:</h4>
+    <ul class="list-group mb-4">
+        {% for plan in invernadero.planes_riego %}
+            <li class="list-group-item">
+                <strong>{{ plan.nombre }}</strong>: {{ plan.patron }}
+            </li>
+        {% endfor %}
+    </ul>
+    <!-- ... -->
+</div>
 {% endblock %}

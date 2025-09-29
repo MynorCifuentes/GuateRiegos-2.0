@@ -1,0 +1,36 @@
+:root {
+  --corinto: #800000;
+  --verde-oscuro: #013220;
+}
+.bg-corinto {
+  background-color: var(--corinto) !important;
+  color: #fff !important;
+}
+.bg-verde-oscuro {
+  background-color: var(--verde-oscuro) !important;
+  color: #fff !important;
+}
+.btn-corinto {
+  background-color: var(--corinto) !important;
+  color: #fff !important;
+  border: none;
+}
+.btn-corinto:hover, .btn-corinto:focus {
+  background-color: #660000 !important;
+  color: #fff !important;
+}
+.btn-verde-oscuro {
+  background-color: var(--verde-oscuro) !important;
+  color: #fff !important;
+  border: none;
+}
+.btn-verde-oscuro:hover, .btn-verde-oscuro:focus {
+  background-color: #011a11 !important;
+  color: #fff !important;
+}
+.border-corinto {
+  border-color: var(--corinto) !important;
+}
+.border-verde-oscuro {
+  border-color: var(--verde-oscuro) !important;
+}
