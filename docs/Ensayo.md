@@ -1,0 +1,15 @@
+# Ensayo: Optimización del Sistema de Riego y Fertilización Automatizada
+
+La agricultura moderna enfrenta grandes retos, entre los cuales destacan el uso eficiente de los recursos hídricos y la necesidad de maximizar la productividad de los cultivos. La implementación de sistemas automatizados de riego y aplicación de fertilizante surge como solución innovadora que permite abordar estos desafíos, aprovechando la tecnología para optimizar procesos y reducir el desperdicio.
+
+El proyecto "GuateRiegos 2.0" responde a esta necesidad mediante la simulación y control de un sistema de riego automatizado utilizando drones, capaces de aplicar agua y fertilizante de forma precisa en los invernaderos. Este enfoque no solo mejora la eficiencia en el uso de recursos, sino que también facilita la toma de decisiones basadas en datos, permitiendo analizar diferentes planes de riego y su impacto en el rendimiento del cultivo.
+
+Uno de los mayores aportes del sistema es la asignación inteligente de drones a hileras y la ejecución secuencial de instrucciones, que garantiza que cada planta reciba el tratamiento adecuado en el momento preciso. La capacidad de programar los drones para moverse, regar y fertilizar de acuerdo con un plan previamente definido, minimiza la intervención humana y reduce el margen de error.
+
+La estructura modular del software, sustentada en clases como `Invernadero`, `Planta`, `Dron` y `PlanRiego`, permite una fácil expansión y mantenimiento. Además, el uso de archivos XML para la configuración inicial otorga flexibilidad al usuario, quien puede adaptar el sistema a distintos escenarios y necesidades agrícolas.
+
+La interfaz web desarrollada con Flask y Bootstrap facilita la interacción del usuario con el sistema, permitiendo la carga de archivos, la selección de planes de riego y la visualización de resultados y reportes detallados. Esta accesibilidad es clave para la adopción de la tecnología en entornos reales, donde la simplicidad y claridad de uso son requisitos fundamentales.
+
+Por otro lado, la generación de reportes en HTML y la visualización de estructuras de datos mediante grafos refuerzan la transparencia y el análisis del desempeño del sistema. Los agricultores y técnicos pueden examinar el proceso a detalle, identificar cuellos de botella y optimizar aún más las operaciones.
+
+En conclusión, la automatización del riego y la fertilización a través de sistemas inteligentes y configurables representa un paso adelante en la agricultura de precisión. "GuateRiegos 2.0" demuestra cómo la integración de software, hardware y buenas prácticas de ingeniería pueden transformar procesos tradicionales, contribuyendo a la sostenibilidad y eficiencia del sector agrícola. El futuro de la agricultura depende en gran medida de la adopción de estas tecnologías, que permiten producir más con menos, cuidando el medio ambiente y mejorando la calidad de vida de quienes dependen de la tierra.
