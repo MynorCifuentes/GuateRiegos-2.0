@@ -32,7 +32,7 @@ class SimuladorRiego:
     def __init__(self, invernadero, plan):
         self.invernadero = invernadero
         self.plan = plan
-        self.instrucciones_por_tiempo = ListaSimple()  # ListaSimple de ListaSimple (una por segundo)
+        self.instrucciones_por_tiempo = ListaSimple()  # ListaSimple de ListaSimple 
         self.estadisticas = ListaSimple()  # ListaSimple de EstadisticaDron
         self.tiempo_total = 0
 

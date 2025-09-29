@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Ayuda{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Ayuda</h2>
+    <h5>Información del estudiante</h5>
+    <ul>
+        <li><b>Nombre:</b> Mynor Cifuentes</li>
+        <li><b>Carné:</b> 201318644</li>
+    </ul>
+    <h5>Acerca de la aplicación</h5>
+    <p>Esta aplicación permite simular el proceso de riego y fertilización automatizada en invernaderos, optimizando los recursos y tiempos mediante la asignación de drones a distintas hileras y planes de riego configurados desde archivos XML.</p>
+    <h5>Guía de uso</h5>
+    <ol>
+        <li>Carga tu archivo XML de configuración desde la página principal.</li>
+        <li>Selecciona un invernadero y un plan para simular.</li>
+        <li>Visualiza el resultado de la simulación, incluyendo estadísticas y pasos de ejecución.</li>
+        <li>Genera el archivo de salida XML con los resultados para todos los invernaderos y planes.</li>
+        <li>Accede a reportes detallados y define el tiempo <i>t</i> para analizar el estado en un momento específico.</li>
+    </ol>
+    <h5>Documentación</h5>
+    <a href="https://github.com/MynorCifuentes/IPC2_Proyecto2_201318644" target="_blank">Ver documentación en GitHub</a>
+    <div class="mt-4">
+        <a href="{{ url_for('index') }}" class="btn btn-secondary">Regresar</a>
+    </div>
+</div>
+{% endblock %}

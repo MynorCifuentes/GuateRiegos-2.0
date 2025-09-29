@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, url_for, request, flash
+from flask import Flask, render_template, redirect, url_for, request, flash, send_file
 from werkzeug.utils import secure_filename
 from Gestor import Gestor
 from SimuladorRiego import SimuladorRiego
@@ -41,7 +41,6 @@ def index():
             flash('Solo se permiten archivos XML.', 'danger')
             return redirect(request.url)
 
-    # NO listas nativas, solo ListaSimple
     invernaderos = GESTOR.invernaderos
     return render_template('index.html', invernaderos=invernaderos)
 
@@ -98,17 +97,67 @@ def simular(nombre_invernadero, nombre_plan):
 
     simulador = SimuladorRiego(invernadero, plan)
     simulador.simular()
-    instrucciones = simulador.get_instrucciones()     # ListaSimple de ListaSimple de (dron_id, accion)
-    estadisticas = simulador.get_estadisticas()       # ListaSimple de EstadisticaDron
+    instrucciones = simulador.get_instrucciones()     
+    estadisticas = simulador.get_estadisticas()       
     tiempo_total = simulador.tiempo_total
 
-    # PASAMOS SOLO ListaSimple's, NUNCA listas nativas
     return render_template('simulacion.html',
                            invernadero=invernadero,
                            plan=plan,
                            instrucciones=instrucciones,
                            estadisticas=estadisticas,
                            tiempo_total=tiempo_total)
+
+@app.route('/reporte/<nombre_invernadero>/<nombre_plan>')
+def reporte(nombre_invernadero, nombre_plan):
+    actual = GESTOR.invernaderos.primero
+    invernadero = None
+    while actual:
+        if actual.dato.nombre == nombre_invernadero:
+            invernadero = actual.dato
+            break
+        actual = actual.siguiente
+    if not invernadero:
+        flash('Invernadero no encontrado.', 'danger')
+        return redirect(url_for('index'))
+
+    actual_plan = invernadero.planes_riego.primero
+    plan = None
+    while actual_plan:
+        if actual_plan.dato.nombre == nombre_plan:
+            plan = actual_plan.dato
+            break
+        actual_plan = actual_plan.siguiente
+    if not plan:
+        flash('Plan de riego no encontrado.', 'danger')
+        return redirect(url_for('detalle_invernadero', nombre=nombre_invernadero))
+
+    simulador = SimuladorRiego(invernadero, plan)
+    simulador.simular()
+    instrucciones = simulador.get_instrucciones()
+    estadisticas = simulador.get_estadisticas()
+    tiempo_total = simulador.tiempo_total
+
+    return render_template('reporte.html',
+                           invernadero=invernadero,
+                           plan=plan,
+                           instrucciones=instrucciones,
+                           estadisticas=estadisticas,
+                           tiempo_total=tiempo_total)
+
+#salida 
+
+@app.route('/generar_salida')
+def generar_salida():
+    from generar_salida import generar_salida_xml
+    archivo = os.path.join(os.getcwd(), "salida.xml")
+    generar_salida_xml(GESTOR, archivo)
+    flash("Archivo de salida generado correctamente.", "success")
+    return send_file(archivo, as_attachment=True)
+
+@app.route('/ayuda')
+def ayuda():
+    return render_template('ayuda.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

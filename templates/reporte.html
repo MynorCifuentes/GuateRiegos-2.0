@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Reporte de Simulación{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Reporte de Simulación</h2>
+    <h4>Invernadero: {{ invernadero.nombre }}</h4>
+    <h5>Plan: {{ plan.nombre }}</h5>
+    <p><b>Tiempo óptimo:</b> {{ tiempo_total }} segundos</p>
+    <h5>Eficiencia de Drones</h5>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID Dron</th>
+                <th>Litros de Agua</th>
+                <th>Gramos de Fertilizante</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for estadistica in estadisticas %}
+            <tr>
+                <td>{{ estadistica.dron_id }}</td>
+                <td>{{ estadistica.litros_agua }}</td>
+                <td>{{ estadistica.gramos_fertilizante }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <h5>Instrucciones por Tiempo</h5>
+    <table class="table table-sm table-striped">
+        <thead>
+            <tr>
+                <th>Tiempo (s)</th>
+                {% for estadistica in estadisticas %}
+                <th>Dron {{ estadistica.dron_id }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+        {% set t = 1 %}
+        {% for fila in instrucciones %}
+            <tr>
+                <td>{{ t }}</td>
+                {% for accion in fila %}
+                    <td>{{ accion[1] }}</td>
+                {% endfor %}
+            </tr>
+            {% set t = t + 1 %}
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('index') }}" class="btn btn-secondary mt-3">Regresar</a>
+</div>
+{% endblock %}

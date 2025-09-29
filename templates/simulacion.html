@@ -1,49 +1,74 @@
 {% extends "base.html" %}
-{% block title %}Simulación - {{ invernadero.nombre }} | GuateRiegos 2.0{% endblock %}
+{% block title %}Simulación{% endblock %}
 {% block content %}
-<a href="{{ url_for('detalle_invernadero', nombre=invernadero.nombre) }}" class="btn btn-outline-success mb-3">&larr; Volver al invernadero</a>
-<h2>Simulación: {{ invernadero.nombre }} - {{ plan.nombre }}</h2>
+<div class="container mt-4">
+    <h2>Simulación</h2>
+    <h4>Invernadero: {{ invernadero.nombre }}</h4>
+    <h5>Plan: {{ plan.nombre }}</h5>
+    <p><b>Tiempo óptimo:</b> {{ tiempo_total }} segundos</p>
+    <h5>Eficiencia de Drones</h5>
+    <ul>
+        {% for estadistica in estadisticas %}
+        <li>Dron {{ estadistica.dron_id }}: {{ estadistica.litros_agua }} litros de agua, {{ estadistica.gramos_fertilizante }} gramos de fertilizante</li>
+        {% endfor %}
+    </ul>
+    <h5>Instrucciones por Tiempo</h5>
+    <table class="table table-sm table-striped">
+        <thead>
+            <tr>
+                <th>Tiempo (s)</th>
+                {% for estadistica in estadisticas %}
+                <th>Dron {{ estadistica.dron_id }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+        {% set t = 1 %}
+        {% for fila in instrucciones %}
+            <tr>
+                <td>{{ t }}</td>
+                {% for accion in fila %}
+                    <td>{{ accion[1] }}</td>
+                {% endfor %}
+            </tr>
+            {% set t = t + 1 %}
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('reporte', nombre_invernadero=invernadero.nombre, nombre_plan=plan.nombre) }}" class="btn btn-warning mt-2">Ver reporte detallado</a>
+    <a href="{{ url_for('index') }}" class="btn btn-secondary mt-2">Regresar</a>
 
-<h4>Tabla de instrucciones por tiempo:</h4>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Tiempo (s)</th>
-            {% for dron_id, _ in instrucciones[0] %}
-                <th>Dron {{ dron_id }}</th>
-            {% endfor %}
-        </tr>
-    </thead>
-    <tbody>
-    {% for fila in instrucciones %}
-        <tr>
-            <td>{{ loop.index }}</td>
-            {% for dron_id, accion in fila %}
-                <td>{{ accion }}</td>
-            {% endfor %}
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-
-<h4>Estadísticas por dron:</h4>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Dron</th>
-            <th>Litros de agua</th>
-            <th>Gramos de fertilizante</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for stat in estadisticas %}
-        <tr>
-            <td>{{ stat.dron_id }}</td>
-            <td>{{ stat.litros_agua }}</td>
-            <td>{{ stat.gramos_fertilizante }}</td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-<div class="alert alert-info">Tiempo óptimo para regado: <strong>{{ tiempo_total }}</strong> segundos</div>
+    <!-- Sección para definir tiempo "t" y mostrar estado de los TDAs -->
+    <div class="mt-4">
+        <form method="GET" action="">
+            <label for="tiempo_t">Visualizar estado en tiempo t (segundos):</label>
+            <input type="number" id="tiempo_t" name="tiempo_t" min="1" max="{{ tiempo_total }}" class="form-control" style="width:120px;display:inline-block;" required>
+            <button type="submit" class="btn btn-info">Ver estado</button>
+        </form>
+        {% if request.args.get('tiempo_t') %}
+            {% set t = request.args.get('tiempo_t')|int %}
+            <h5 class="mt-3">Estado en t = {{ t }} segundos</h5>
+            <table class="table table-sm table-bordered">
+                <thead>
+                    <tr>
+                        {% for estadistica in estadisticas %}
+                        <th>Dron {{ estadistica.dron_id }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    {% for fila in instrucciones %}
+                        {% if loop.index == t %}
+                            {% for accion in fila %}
+                                <td>{{ accion[1] }}</td>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

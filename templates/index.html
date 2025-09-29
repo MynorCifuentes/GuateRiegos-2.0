@@ -1,26 +1,26 @@
 {% extends "base.html" %}
-{% block title %}Inicio | GuateRiegos 2.0{% endblock %}
+{% block title %}Inicio{% endblock %}
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-md-8">
-        <h2 class="mb-4">Invernaderos disponibles</h2>
-        <form method="post" enctype="multipart/form-data" class="mb-4">
-            <div class="input-group">
-                <input type="file" name="archivo_xml" accept=".xml" class="form-control" required>
-                <button type="submit" class="btn btn-success">Cargar configuración XML</button>
-            </div>
-        </form>
-        {% if invernaderos %}
-        <div class="list-group">
-            {% for inv in invernaderos %}
-                <a href="{{ url_for('detalle_invernadero', nombre=inv.nombre) }}" class="list-group-item list-group-item-action">
-                    <strong>{{ inv.nombre }}</strong> &mdash; {{ inv.numero_hileras }} hileras, {{ inv.plantas_x_hilera }} plantas/hilera
-                </a>
-            {% endfor %}
+<div class="container mt-4">
+    <h2>Simulador de Riego Automatizado</h2>
+    <form method="POST" enctype="multipart/form-data" class="mb-4">
+        <div class="form-group">
+            <label for="archivo_xml">Cargar archivo XML:</label>
+            <input type="file" id="archivo_xml" name="archivo_xml" class="form-control-file" accept=".xml" required>
         </div>
+        <button type="submit" class="btn btn-success mt-2">Cargar</button>
+    </form>
+    <a href="{{ url_for('generar_salida') }}" class="btn btn-primary mb-3">Generar y descargar archivo de salida XML</a>
+    <a href="{{ url_for('ayuda') }}" class="btn btn-info mb-3">Ayuda</a>
+    <h4>Invernaderos disponibles</h4>
+    <ul class="list-group">
+        {% for inv in invernaderos %}
+            <li class="list-group-item">
+                <a href="{{ url_for('detalle_invernadero', nombre=inv.nombre) }}">{{ inv.nombre }}</a>
+            </li>
         {% else %}
-            <div class="alert alert-warning">No hay invernaderos cargados.</div>
-        {% endif %}
-    </div>
+            <li class="list-group-item">No hay invernaderos cargados.</li>
+        {% endfor %}
+    </ul>
 </div>
 {% endblock %}
