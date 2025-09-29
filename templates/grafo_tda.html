@@ -10,7 +10,7 @@
     </form>
     {% if grafo_url %}
         <div class="mt-4">
-            <img src="{{ grafo_url }}?{{ tiempo }}" alt="Grafo de TDAs">
+            <img src="{{ grafo_url }}" alt="Grafo de TDAs" style="max-width:100%; border:1px solid #888;">
         </div>
     {% endif %}
     <a href="{{ url_for('simular', nombre_invernadero=nombre_invernadero, nombre_plan=nombre_plan) }}" class="btn btn-secondary mt-3">Regresar</a>
