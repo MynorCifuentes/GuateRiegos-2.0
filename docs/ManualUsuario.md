@@ -1,77 +1,102 @@
-# Manual de Usuario
+# Manual de Usuario – GuateRiegos 2.0
+
+
 
 ## Introducción
 
-Esta aplicación web permite simular el proceso de riego y fertilización automatizada en invernaderos utilizando drones. El sistema asigna drones a hileras y ejecuta planes de riego definidos en archivos XML de configuración. El usuario puede cargar archivos, seleccionar invernaderos y planes, simular procesos, visualizar estadísticas y generar reportes.
+GuateRiegos 2.0 es una aplicación web diseñada para simular y analizar el proceso automatizado de riego y fertilización en invernaderos usando drones.
 
----
 
-## Requisitos
+## Requisitos Previos
 
 - Navegador web moderno (Chrome, Firefox, Edge, etc.).
-- Archivo de configuración XML válido y estructurado según las especificaciones del sistema.
-- Acceso a la URL donde está desplegada la aplicación (ejemplo: http://localhost:5000).
+- Archivo XML de configuración válido, estructurado según el formato del sistema.
+- Acceso a la URL de la aplicación (ejemplo: http://localhost:5000).
 
----
 
-## Primeros Pasos
 
-1. Abre tu navegador y accede a la URL de la aplicación.
-2. Se mostrará la página principal del simulador de riego automatizado.
+## 1. Pantalla Principal y Carga de Archivo XML
 
----
+Al ingresar a la aplicación, verás la pantalla principal con el botón para cargar el archivo de configuración XML.
 
-## Funcionalidades Principales
+![alt text](/imagenes/image-5.png)  
+*Pantalla principal mostrando el botón de carga de archivo XML y la lista de invernaderos cargados.*
 
-### 1. Cargar archivo de configuración XML
 
-- Haz clic en el botón “Cargar archivo XML”.
-- Selecciona el archivo XML desde tu equipo.
-- Presiona el botón “Cargar”.
-- Si el archivo es válido, aparecerá una lista de invernaderos disponibles.
 
-### 2. Seleccionar invernadero y plan de riego
+## 2. Selección de Invernadero
 
-- En la lista, haz clic en el nombre del invernadero que deseas simular.
-- Se mostrarán los detalles del invernadero (cantidad de hileras, plantas por hilera, etc.).
-- Selecciona un plan de riego de la lista desplegable y presiona el botón “Simular”.
+Tras cargar el archivo, la aplicación muestra la lista de invernaderos disponibles. Haz clic en el nombre de un invernadero para ver sus detalles.
 
-### 3. Visualizar simulación y reportes
+![alt text](/imagenes/image-6.png)    
+*Vista de los invernaderos listados y selección de uno para simular.*
 
-- Después de simular, verás instrucciones por tiempo y estadísticas para cada dron.
-- Opciones disponibles:
-  - Ver reporte detallado (botón correspondiente).
-  - Generar archivo de salida XML con resultados.
-  - Ver grafo de estructuras de datos (estado de TDAs).
 
-### 4. Analizar estado en un tiempo específico (“t”)
 
-- Ingresa un valor de tiempo en segundos en el campo correspondiente y presiona el botón “Ver estado”.
-- Se mostrará el estado de los drones y las instrucciones ejecutadas hasta ese tiempo.
+## 3. Detalles del Invernadero y Selección de Plan de Riego
 
-### 5. Ayuda y documentación
+En pantalla verás los datos básicos del invernadero: número de hileras, plantas por hilera, lista de plantas y los planes de riego disponibles. Selecciona un plan y presiona "Simular".
 
-- Haz clic en el botón “Ayuda” para ver información sobre el uso, datos del estudiante y enlace a la documentación online.
 
----
 
-## Consejos de Uso
+## 4. Simulación del Proceso
 
-- Verifica que tu archivo XML siga la estructura requerida.
-- Puedes probar diferentes planes de riego y comparar resultados.
-- Consulta el apartado de ayuda ante cualquier duda.
+Al simular, se muestran los siguientes resultados:
 
----
+- Estadísticas por dron: litros de agua y gramos de fertilizante utilizados.
+- Tabla de instrucciones por tiempo para cada dron.
+- Botones para ver el reporte detallado, generar archivo XML de salida y ver el grafo de estructuras en tiempo t.
 
-## Solución de Problemas
+![alt text](/imagenes/image-7.png)   
+*Resultados de la simulación: estadísticas, tabla de instrucciones y opciones avanzadas.*
 
-- Si la carga del archivo falla, asegúrate de que el XML tenga la estructura y datos correctos.
+
+
+## 5. Visualización de Reporte Detallado
+
+Al hacer clic en “Ver reporte detallado”, accedes a un informe con tablas de eficiencia de drones y las instrucciones ejecutadas. Este reporte puede descargarse o visualizarse en HTML.
+
+
+
+## 6. Generación de Archivo XML de Resultados
+
+Mediante el botón correspondiente, puedes generar y descargar el archivo de salida XML con todos los resultados de la simulación.
+
+
+
+## 7. Análisis en Tiempo Específico “t” y Grafo de Estructuras
+
+En la sección de simulación puedes definir un valor "t" (segundos) para ver el estado de los drones y las instrucciones ejecutadas hasta ese momento. Además, en la opción "Ver grafo de TDAs" se muestra la estructura de datos interna del sistema en ese instante, ideal para análisis y depuración.
+
+
+
+## 8. Ayuda y Documentación
+
+Haz clic en “Ayuda” para acceder a información sobre el uso, datos del estudiante y enlace a la documentación del proyecto.
+
+
+
+## 9. Sugerencias de Buenas Prácticas
+
+- Verifica que el archivo XML cumpla el formato requerido antes de cargarlo.
+- Realiza simulaciones con diferentes planes de riego para comparar resultados.
+- Utiliza el análisis en tiempo “t” para entender el comportamiento de los drones durante la simulación.
+- Consulta los reportes y grafos para identificar oportunidades de optimización.
+
+
+
+## 10. Solución de Problemas
+
+- Si la carga del archivo falla, revisa la estructura y los datos del XML.
 - En caso de errores inesperados, recarga la página y repite el proceso.
-- Para soporte adicional, revisa la ayuda o la documentación enlazada.
+- Consulta los mensajes en la interfaz para identificar el tipo de error y tomar acciones correctivas.
 
----
 
-## Contacto
+## Contacto y Soporte
 
-Desarrollado por Mynor Cifuentes.
-Para más información, consulta la [documentación en GitHub](https://github.com/MynorCifuentes/IPC2_Proyecto2_201318644).
+Desarrollado por Mynor Cifuentes.  
+Para soporte adicional y sugerencias, consulta la [documentación online en GitHub](https://github.com/MynorCifuentes/IPC2_Proyecto2_201318644).
+
+Para reportar errores o sugerencias puedes hacerlos a través de los issues del repositorio:
+[Issues GuateRiegos 2.0](https://github.com/MynorCifuentes/IPC2_Proyecto2_201318644/issues).
+

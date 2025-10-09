@@ -34,3 +34,6 @@
 .border-verde-oscuro {
   border-color: var(--verde-oscuro) !important;
 }
+.bg-white {
+  color: #212529 !important; /* corrige la letras blancas*/
+}
