@@ -1,6 +1,5 @@
-# IPC2_Proyecto2_201318644
-# Propuesta
 # GuateRiegos 2.0
+## Propuesta
 
 La empresa ha creado un sistema innovador para optimizar la cantidad de agua, fertilizante y el tiempo necesario para mantener saludables los cultivos en ivnernaderos 
 
