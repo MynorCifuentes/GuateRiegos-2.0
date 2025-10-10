@@ -117,38 +117,7 @@ class SimuladorRiego:
 ```
 
 
-
-### 3.4. Visualización de instrucciones por tiempo (`simulacion.html`)
-
-```html
-<h5>Instrucciones por Tiempo</h5>
-<table class="table table-sm table-striped">
-    <thead>
-        <tr>
-            <th>Tiempo (s)</th>
-            {% for estadistica in estadisticas %}
-            <th>Dron {{ estadistica.dron_id }}</th>
-            {% endfor %}
-        </tr>
-    </thead>
-    <tbody>
-    {% se t = 1 %}
-    {% for fila in instrucciones %}
-        <tr>
-            <td>{{ t }}</td>
-            {% for accion in fila %}
-                <td>{{ accion[1] }}</td>
-            {% endfor %}
-        </tr>
-        {% set t = t + 1 %}
-    {% endfor %}
-    </tbody>
-</table>
-```
-
-
-
-### 3.5. Graficación de TDAs (`graficar_tda.py`)
+### 3.4. Graficación de TDAs (`graficar_tda.py`)
 
 ```python
 from graphviz import Digraph
@@ -162,7 +131,7 @@ def graficar_tda_simulador(simulador, tiempo, ruta_salida='static/grafo_tda.png'
 
 
 
-### 3.6. Listas Simples y Dobles (`Estructuras/ListaSimple.py`)
+### 3.5. Listas Simples y Dobles (`Estructuras/ListaSimple.py`)
 
 ```python
 class ListaSimple:
@@ -179,7 +148,7 @@ class ListaSimple:
 
 
 
-### 3.7. Estructura de Nodo (`Estructuras/Nodo.py`)
+### 3.6. Estructura de Nodo (`Estructuras/Nodo.py`)
 
 ```python
 class Nodo:
@@ -251,4 +220,5 @@ Consulta la [documentación online en GitHub](https://github.com/MynorCifuentes/
 
 Para reportar errores o sugerencias puedes hacerlos a través de los issues del repositorio:
 [Issues GuateRiegos 2.0](https://github.com/MynorCifuentes/IPC2_Proyecto2_201318644/issues).
+
 
