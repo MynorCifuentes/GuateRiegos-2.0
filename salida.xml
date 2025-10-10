@@ -1,284 +1,172 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <datosSalida>
     <listaInvernaderos>
-        <invernadero nombre="Invernadero San Marcos">
-            <plan nombre="Dia 1">
-                <tiempoOptimoSegundos>13</tiempoOptimoSegundos>
-                <aguaRequeridaLitros>9</aguaRequeridaLitros>
-                <fertilizanteRequeridoGramos>350</fertilizanteRequeridoGramos>
+        <invernadero nombre="Invernadero Santa Rosa">
+            <plan nombre="Semana 1">
+                <tiempoOptimoSegundos>16</tiempoOptimoSegundos>
+                <aguaRequeridaLitros>14</aguaRequeridaLitros>
+                <fertilizanteRequeridoGramos>1350</fertilizanteRequeridoGramos>
                 <eficienciaDronesRegadores>
-                    <dron nombre="1" litrosAgua="3" gramosFertilizante="200" />
-                    <dron nombre="2" litrosAgua="1" gramosFertilizante="25" />
-                    <dron nombre="3" litrosAgua="4" gramosFertilizante="100" />
-                    <dron nombre="4" litrosAgua="1" gramosFertilizante="25" />
+                    <dron nombre="1" litrosAgua="6" gramosFertilizante="600" />
+                    <dron nombre="2" litrosAgua="1" gramosFertilizante="50" />
+                    <dron nombre="3" litrosAgua="1" gramosFertilizante="100" />
+                    <dron nombre="4" litrosAgua="6" gramosFertilizante="600" />
                 </eficienciaDronesRegadores>
                 <instrucciones>
                     <tiempo segundos="1">
-                        <dron nombre="4" accion="Adelante (H4P1)" />
+                        <dron nombre="1" accion="Adelante (H1P1)" />
                     </tiempo>
                     <tiempo segundos="2">
-                        <dron nombre="4" accion="Regar" />
+                        <dron nombre="1" accion="Regar" />
                     </tiempo>
                     <tiempo segundos="3">
-                        <dron nombre="3" accion="Adelante (H3P1)" />
-                        <dron nombre="4" accion="Fin" />
+                        <dron nombre="4" accion="Adelante (H4P1)" />
                     </tiempo>
                     <tiempo segundos="4">
-                        <dron nombre="3" accion="Adelante (H3P2)" />
-                        <dron nombre="4" accion="Fin" />
+                        <dron nombre="4" accion="Regar" />
                     </tiempo>
                     <tiempo segundos="5">
-                        <dron nombre="3" accion="Regar" />
-                        <dron nombre="4" accion="Fin" />
+                        <dron nombre="2" accion="Adelante (H2P1)" />
                     </tiempo>
                     <tiempo segundos="6">
-                        <dron nombre="2" accion="Adelante (H2P1)" />
-                        <dron nombre="3" accion="Fin" />
-                        <dron nombre="4" accion="Fin" />
+                        <dron nombre="2" accion="Adelante (H2P2)" />
                     </tiempo>
                     <tiempo segundos="7">
-                        <dron nombre="2" accion="Adelante (H2P2)" />
-                        <dron nombre="3" accion="Fin" />
-                        <dron nombre="4" accion="Fin" />
+                        <dron nombre="2" accion="Regar" />
                     </tiempo>
                     <tiempo segundos="8">
-                        <dron nombre="2" accion="Adelante (H2P3)" />
-                        <dron nombre="3" accion="Fin" />
-                        <dron nombre="4" accion="Fin" />
+                        <dron nombre="2" accion="Fin" />
+                        <dron nombre="3" accion="Adelante (H3P1)" />
                     </tiempo>
                     <tiempo segundos="9">
-                        <dron nombre="2" accion="Regar" />
-                        <dron nombre="3" accion="Fin" />
-                        <dron nombre="4" accion="Fin" />
+                        <dron nombre="2" accion="Fin" />
+                        <dron nombre="3" accion="Adelante (H3P2)" />
                     </tiempo>
                     <tiempo segundos="10">
-                        <dron nombre="1" accion="Adelante (H1P1)" />
                         <dron nombre="2" accion="Fin" />
-                        <dron nombre="3" accion="Fin" />
-                        <dron nombre="4" accion="Fin" />
+                        <dron nombre="3" accion="Regar" />
                     </tiempo>
                     <tiempo segundos="11">
                         <dron nombre="1" accion="Adelante (H1P2)" />
                         <dron nombre="2" accion="Fin" />
                         <dron nombre="3" accion="Fin" />
-                        <dron nombre="4" accion="Fin" />
                     </tiempo>
                     <tiempo segundos="12">
                         <dron nombre="1" accion="Adelante (H1P3)" />
                         <dron nombre="2" accion="Fin" />
                         <dron nombre="3" accion="Fin" />
-                        <dron nombre="4" accion="Fin" />
                     </tiempo>
                     <tiempo segundos="13">
                         <dron nombre="1" accion="Regar" />
                         <dron nombre="2" accion="Fin" />
                         <dron nombre="3" accion="Fin" />
-                        <dron nombre="4" accion="Fin" />
                     </tiempo>
                     <tiempo segundos="14">
                         <dron nombre="1" accion="Fin" />
                         <dron nombre="2" accion="Fin" />
                         <dron nombre="3" accion="Fin" />
-                        <dron nombre="4" accion="Fin" />
-                    </tiempo>
-                </instrucciones>
-            </plan>
-            <plan nombre="Dia 2">
-                <tiempoOptimoSegundos>20</tiempoOptimoSegundos>
-                <aguaRequeridaLitros>14</aguaRequeridaLitros>
-                <fertilizanteRequeridoGramos>675</fertilizanteRequeridoGramos>
-                <eficienciaDronesRegadores>
-                    <dron nombre="1" litrosAgua="4" gramosFertilizante="100" />
-                    <dron nombre="2" litrosAgua="2" gramosFertilizante="50" />
-                    <dron nombre="3" litrosAgua="6" gramosFertilizante="400" />
-                    <dron nombre="4" litrosAgua="2" gramosFertilizante="125" />
-                </eficienciaDronesRegadores>
-                <instrucciones>
-                    <tiempo segundos="1">
-                        <dron nombre="1" accion="Adelante (H1P1)" />
-                    </tiempo>
-                    <tiempo segundos="2">
-                        <dron nombre="1" accion="Adelante (H1P2)" />
-                    </tiempo>
-                    <tiempo segundos="3">
-                        <dron nombre="1" accion="Regar" />
-                    </tiempo>
-                    <tiempo segundos="4">
-                        <dron nombre="1" accion="Fin" />
-                        <dron nombre="4" accion="Adelante (H4P1)" />
-                    </tiempo>
-                    <tiempo segundos="5">
-                        <dron nombre="1" accion="Fin" />
                         <dron nombre="4" accion="Adelante (H4P2)" />
                     </tiempo>
-                    <tiempo segundos="6">
-                        <dron nombre="1" accion="Fin" />
-                        <dron nombre="4" accion="Regar" />
-                    </tiempo>
-                    <tiempo segundos="7">
-                        <dron nombre="1" accion="Fin" />
-                        <dron nombre="2" accion="Adelante (H2P1)" />
-                        <dron nombre="4" accion="Fin" />
-                    </tiempo>
-                    <tiempo segundos="8">
-                        <dron nombre="1" accion="Fin" />
-                        <dron nombre="2" accion="Adelante (H2P2)" />
-                        <dron nombre="4" accion="Fin" />
-                    </tiempo>
-                    <tiempo segundos="9">
-                        <dron nombre="1" accion="Fin" />
-                        <dron nombre="2" accion="Adelante (H2P3)" />
-                        <dron nombre="4" accion="Fin" />
-                    </tiempo>
-                    <tiempo segundos="10">
-                        <dron nombre="1" accion="Fin" />
-                        <dron nombre="2" accion="Regar" />
-                        <dron nombre="4" accion="Fin" />
-                    </tiempo>
-                    <tiempo segundos="11">
-                        <dron nombre="1" accion="Fin" />
-                        <dron nombre="3" accion="Adelante (H3P1)" />
-                        <dron nombre="4" accion="Fin" />
-                    </tiempo>
-                    <tiempo segundos="12">
-                        <dron nombre="1" accion="Fin" />
-                        <dron nombre="3" accion="Adelante (H3P2)" />
-                        <dron nombre="4" accion="Fin" />
-                    </tiempo>
-                    <tiempo segundos="13">
-                        <dron nombre="1" accion="Fin" />
-                        <dron nombre="3" accion="Adelante (H3P3)" />
-                        <dron nombre="4" accion="Fin" />
-                    </tiempo>
-                    <tiempo segundos="14">
-                        <dron nombre="1" accion="Fin" />
-                        <dron nombre="3" accion="Regar" />
-                        <dron nombre="4" accion="Fin" />
-                    </tiempo>
                     <tiempo segundos="15">
-                        <dron nombre="1" accion="Fin" />
-                        <dron nombre="2" accion="Atrás (H2P2)" />
-                        <dron nombre="4" accion="Fin" />
-                    </tiempo>
-                    <tiempo segundos="16">
-                        <dron nombre="1" accion="Fin" />
-                        <dron nombre="2" accion="Atrás (H2P1)" />
-                        <dron nombre="4" accion="Fin" />
-                    </tiempo>
-                    <tiempo segundos="17">
-                        <dron nombre="1" accion="Fin" />
-                        <dron nombre="2" accion="Regar" />
-                        <dron nombre="4" accion="Fin" />
-                    </tiempo>
-                    <tiempo segundos="18">
-                        <dron nombre="1" accion="Fin" />
-                        <dron nombre="2" accion="Fin" />
-                        <dron nombre="3" accion="Atrás (H3P2)" />
-                        <dron nombre="4" accion="Fin" />
-                    </tiempo>
-                    <tiempo segundos="19">
-                        <dron nombre="1" accion="Fin" />
-                        <dron nombre="2" accion="Fin" />
-                        <dron nombre="3" accion="Atrás (H3P1)" />
-                        <dron nombre="4" accion="Fin" />
-                    </tiempo>
-                    <tiempo segundos="20">
-                        <dron nombre="1" accion="Fin" />
-                        <dron nombre="2" accion="Fin" />
-                        <dron nombre="3" accion="Regar" />
-                        <dron nombre="4" accion="Fin" />
-                    </tiempo>
-                    <tiempo segundos="21">
-                        <dron nombre="1" accion="Fin" />
-                        <dron nombre="2" accion="Fin" />
-                        <dron nombre="3" accion="Fin" />
-                        <dron nombre="4" accion="Fin" />
-                    </tiempo>
-                </instrucciones>
-            </plan>
-            <plan nombre="Dia 3">
-                <tiempoOptimoSegundos>20</tiempoOptimoSegundos>
-                <aguaRequeridaLitros>24</aguaRequeridaLitros>
-                <fertilizanteRequeridoGramos>750</fertilizanteRequeridoGramos>
-                <eficienciaDronesRegadores>
-                    <dron nombre="1" litrosAgua="8" gramosFertilizante="200" />
-                    <dron nombre="2" litrosAgua="4" gramosFertilizante="175" />
-                    <dron nombre="3" litrosAgua="8" gramosFertilizante="200" />
-                    <dron nombre="4" litrosAgua="4" gramosFertilizante="175" />
-                </eficienciaDronesRegadores>
-                <instrucciones>
-                    <tiempo segundos="1">
-                        <dron nombre="2" accion="Adelante (H2P1)" />
-                    </tiempo>
-                    <tiempo segundos="2">
-                        <dron nombre="2" accion="Regar" />
-                    </tiempo>
-                    <tiempo segundos="3">
-                        <dron nombre="4" accion="Adelante (H4P1)" />
-                    </tiempo>
-                    <tiempo segundos="4">
-                        <dron nombre="4" accion="Regar" />
-                    </tiempo>
-                    <tiempo segundos="5">
-                        <dron nombre="1" accion="Adelante (H1P1)" />
-                    </tiempo>
-                    <tiempo segundos="6">
-                        <dron nombre="1" accion="Adelante (H1P2)" />
-                    </tiempo>
-                    <tiempo segundos="7">
-                        <dron nombre="1" accion="Regar" />
-                    </tiempo>
-                    <tiempo segundos="8">
-                        <dron nombre="3" accion="Adelante (H3P1)" />
-                    </tiempo>
-                    <tiempo segundos="9">
-                        <dron nombre="3" accion="Adelante (H3P2)" />
-                    </tiempo>
-                    <tiempo segundos="10">
-                        <dron nombre="3" accion="Regar" />
-                    </tiempo>
-                    <tiempo segundos="11">
-                        <dron nombre="2" accion="Adelante (H2P2)" />
-                    </tiempo>
-                    <tiempo segundos="12">
-                        <dron nombre="2" accion="Regar" />
-                    </tiempo>
-                    <tiempo segundos="13">
-                        <dron nombre="4" accion="Adelante (H4P2)" />
-                    </tiempo>
-                    <tiempo segundos="14">
-                        <dron nombre="4" accion="Regar" />
-                    </tiempo>
-                    <tiempo segundos="15">
-                        <dron nombre="1" accion="Regar" />
-                    </tiempo>
-                    <tiempo segundos="16">
-                        <dron nombre="1" accion="Fin" />
-                        <dron nombre="3" accion="Regar" />
-                    </tiempo>
-                    <tiempo segundos="17">
-                        <dron nombre="1" accion="Fin" />
-                        <dron nombre="2" accion="Adelante (H2P3)" />
-                        <dron nombre="3" accion="Fin" />
-                    </tiempo>
-                    <tiempo segundos="18">
-                        <dron nombre="1" accion="Fin" />
-                        <dron nombre="2" accion="Regar" />
-                        <dron nombre="3" accion="Fin" />
-                    </tiempo>
-                    <tiempo segundos="19">
                         <dron nombre="1" accion="Fin" />
                         <dron nombre="2" accion="Fin" />
                         <dron nombre="3" accion="Fin" />
                         <dron nombre="4" accion="Adelante (H4P3)" />
                     </tiempo>
-                    <tiempo segundos="20">
+                    <tiempo segundos="16">
                         <dron nombre="1" accion="Fin" />
                         <dron nombre="2" accion="Fin" />
                         <dron nombre="3" accion="Fin" />
                         <dron nombre="4" accion="Regar" />
                     </tiempo>
-                    <tiempo segundos="21">
+                    <tiempo segundos="17">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Fin" />
+                        <dron nombre="3" accion="Fin" />
+                        <dron nombre="4" accion="Fin" />
+                    </tiempo>
+                </instrucciones>
+            </plan>
+            <plan nombre="Semana 2">
+                <tiempoOptimoSegundos>16</tiempoOptimoSegundos>
+                <aguaRequeridaLitros>8</aguaRequeridaLitros>
+                <fertilizanteRequeridoGramos>700</fertilizanteRequeridoGramos>
+                <eficienciaDronesRegadores>
+                    <dron nombre="1" litrosAgua="2" gramosFertilizante="200" />
+                    <dron nombre="2" litrosAgua="2" gramosFertilizante="150" />
+                    <dron nombre="3" litrosAgua="2" gramosFertilizante="150" />
+                    <dron nombre="4" litrosAgua="2" gramosFertilizante="200" />
+                </eficienciaDronesRegadores>
+                <instrucciones>
+                    <tiempo segundos="1">
+                        <dron nombre="2" accion="Adelante (H2P1)" />
+                    </tiempo>
+                    <tiempo segundos="2">
+                        <dron nombre="2" accion="Regar" />
+                    </tiempo>
+                    <tiempo segundos="3">
+                        <dron nombre="1" accion="Adelante (H1P1)" />
+                    </tiempo>
+                    <tiempo segundos="4">
+                        <dron nombre="1" accion="Adelante (H1P2)" />
+                    </tiempo>
+                    <tiempo segundos="5">
+                        <dron nombre="1" accion="Regar" />
+                    </tiempo>
+                    <tiempo segundos="6">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="3" accion="Adelante (H3P1)" />
+                    </tiempo>
+                    <tiempo segundos="7">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="3" accion="Regar" />
+                    </tiempo>
+                    <tiempo segundos="8">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="4" accion="Adelante (H4P1)" />
+                    </tiempo>
+                    <tiempo segundos="9">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="4" accion="Adelante (H4P2)" />
+                    </tiempo>
+                    <tiempo segundos="10">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="4" accion="Regar" />
+                    </tiempo>
+                    <tiempo segundos="11">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Adelante (H2P2)" />
+                        <dron nombre="4" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="12">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Adelante (H2P3)" />
+                        <dron nombre="4" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="13">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Regar" />
+                        <dron nombre="4" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="14">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Fin" />
+                        <dron nombre="3" accion="Adelante (H3P2)" />
+                        <dron nombre="4" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="15">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Fin" />
+                        <dron nombre="3" accion="Adelante (H3P3)" />
+                        <dron nombre="4" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="16">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Fin" />
+                        <dron nombre="3" accion="Regar" />
+                        <dron nombre="4" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="17">
                         <dron nombre="1" accion="Fin" />
                         <dron nombre="2" accion="Fin" />
                         <dron nombre="3" accion="Fin" />
@@ -287,141 +175,571 @@
                 </instrucciones>
             </plan>
         </invernadero>
-        <invernadero nombre="Invernadero Guatemala">
-            <plan nombre="Final">
-                <tiempoOptimoSegundos>40</tiempoOptimoSegundos>
-                <aguaRequeridaLitros>64</aguaRequeridaLitros>
-                <fertilizanteRequeridoGramos>2025</fertilizanteRequeridoGramos>
+        <invernadero nombre="Invernadero Escuintla">
+            <plan nombre="Lunes">
+                <tiempoOptimoSegundos>21</tiempoOptimoSegundos>
+                <aguaRequeridaLitros>22</aguaRequeridaLitros>
+                <fertilizanteRequeridoGramos>1650</fertilizanteRequeridoGramos>
                 <eficienciaDronesRegadores>
-                    <dron nombre="2" litrosAgua="49" gramosFertilizante="525" />
-                    <dron nombre="4" litrosAgua="15" gramosFertilizante="1500" />
+                    <dron nombre="1" litrosAgua="8" gramosFertilizante="400" />
+                    <dron nombre="2" litrosAgua="2" gramosFertilizante="400" />
+                    <dron nombre="3" litrosAgua="2" gramosFertilizante="50" />
+                    <dron nombre="4" litrosAgua="2" gramosFertilizante="400" />
+                    <dron nombre="5" litrosAgua="8" gramosFertilizante="400" />
                 </eficienciaDronesRegadores>
                 <instrucciones>
                     <tiempo segundos="1">
-                        <dron nombre="2" accion="Adelante (H1P1)" />
+                        <dron nombre="1" accion="Adelante (H5P1)" />
                     </tiempo>
                     <tiempo segundos="2">
-                        <dron nombre="2" accion="Regar" />
+                        <dron nombre="1" accion="Regar" />
                     </tiempo>
                     <tiempo segundos="3">
-                        <dron nombre="4" accion="Adelante (H2P1)" />
+                        <dron nombre="3" accion="Adelante (H3P1)" />
                     </tiempo>
                     <tiempo segundos="4">
-                        <dron nombre="4" accion="Regar" />
+                        <dron nombre="3" accion="Regar" />
                     </tiempo>
                     <tiempo segundos="5">
-                        <dron nombre="2" accion="Adelante (H1P2)" />
+                        <dron nombre="4" accion="Adelante (H2P1)" />
                     </tiempo>
                     <tiempo segundos="6">
-                        <dron nombre="2" accion="Regar" />
-                    </tiempo>
-                    <tiempo segundos="7">
                         <dron nombre="4" accion="Adelante (H2P2)" />
                     </tiempo>
-                    <tiempo segundos="8">
+                    <tiempo segundos="7">
                         <dron nombre="4" accion="Regar" />
                     </tiempo>
+                    <tiempo segundos="8">
+                        <dron nombre="4" accion="Fin" />
+                        <dron nombre="5" accion="Adelante (H1P1)" />
+                    </tiempo>
                     <tiempo segundos="9">
-                        <dron nombre="2" accion="Adelante (H1P3)" />
+                        <dron nombre="4" accion="Fin" />
+                        <dron nombre="5" accion="Regar" />
+                    </tiempo>
+                    <tiempo segundos="10">
+                        <dron nombre="2" accion="Adelante (H4P1)" />
+                        <dron nombre="4" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="11">
+                        <dron nombre="2" accion="Adelante (H4P2)" />
+                        <dron nombre="4" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="12">
+                        <dron nombre="2" accion="Regar" />
+                        <dron nombre="4" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="13">
+                        <dron nombre="1" accion="Adelante (H5P2)" />
+                        <dron nombre="2" accion="Fin" />
+                        <dron nombre="4" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="14">
+                        <dron nombre="1" accion="Adelante (H5P3)" />
+                        <dron nombre="2" accion="Fin" />
+                        <dron nombre="4" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="15">
+                        <dron nombre="1" accion="Regar" />
+                        <dron nombre="2" accion="Fin" />
+                        <dron nombre="4" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="16">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Fin" />
+                        <dron nombre="3" accion="Adelante (H3P2)" />
+                        <dron nombre="4" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="17">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Fin" />
+                        <dron nombre="3" accion="Adelante (H3P3)" />
+                        <dron nombre="4" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="18">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Fin" />
+                        <dron nombre="3" accion="Regar" />
+                        <dron nombre="4" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="19">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Fin" />
+                        <dron nombre="3" accion="Fin" />
+                        <dron nombre="4" accion="Fin" />
+                        <dron nombre="5" accion="Adelante (H1P2)" />
+                    </tiempo>
+                    <tiempo segundos="20">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Fin" />
+                        <dron nombre="3" accion="Fin" />
+                        <dron nombre="4" accion="Fin" />
+                        <dron nombre="5" accion="Adelante (H1P3)" />
+                    </tiempo>
+                    <tiempo segundos="21">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Fin" />
+                        <dron nombre="3" accion="Fin" />
+                        <dron nombre="4" accion="Fin" />
+                        <dron nombre="5" accion="Regar" />
+                    </tiempo>
+                    <tiempo segundos="22">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Fin" />
+                        <dron nombre="3" accion="Fin" />
+                        <dron nombre="4" accion="Fin" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                </instrucciones>
+            </plan>
+            <plan nombre="Miercoles">
+                <tiempoOptimoSegundos>23</tiempoOptimoSegundos>
+                <aguaRequeridaLitros>17</aguaRequeridaLitros>
+                <fertilizanteRequeridoGramos>2050</fertilizanteRequeridoGramos>
+                <eficienciaDronesRegadores>
+                    <dron nombre="1" litrosAgua="4" gramosFertilizante="200" />
+                    <dron nombre="2" litrosAgua="4" gramosFertilizante="800" />
+                    <dron nombre="3" litrosAgua="1" gramosFertilizante="50" />
+                    <dron nombre="4" litrosAgua="4" gramosFertilizante="800" />
+                    <dron nombre="5" litrosAgua="4" gramosFertilizante="200" />
+                </eficienciaDronesRegadores>
+                <instrucciones>
+                    <tiempo segundos="1">
+                        <dron nombre="5" accion="Adelante (H1P1)" />
+                    </tiempo>
+                    <tiempo segundos="2">
+                        <dron nombre="5" accion="Adelante (H1P2)" />
+                    </tiempo>
+                    <tiempo segundos="3">
+                        <dron nombre="5" accion="Regar" />
+                    </tiempo>
+                    <tiempo segundos="4">
+                        <dron nombre="4" accion="Adelante (H2P1)" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="5">
+                        <dron nombre="4" accion="Adelante (H2P2)" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="6">
+                        <dron nombre="4" accion="Adelante (H2P3)" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="7">
+                        <dron nombre="4" accion="Regar" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="8">
+                        <dron nombre="2" accion="Adelante (H4P1)" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="9">
+                        <dron nombre="2" accion="Adelante (H4P2)" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="10">
+                        <dron nombre="2" accion="Adelante (H4P3)" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="11">
+                        <dron nombre="2" accion="Regar" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="12">
+                        <dron nombre="1" accion="Adelante (H5P1)" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="13">
+                        <dron nombre="1" accion="Adelante (H5P2)" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="14">
+                        <dron nombre="1" accion="Regar" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="15">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="3" accion="Adelante (H3P1)" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="16">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="3" accion="Adelante (H3P2)" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="17">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="3" accion="Regar" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="18">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="3" accion="Fin" />
+                        <dron nombre="4" accion="Atrás (H2P2)" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="19">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="3" accion="Fin" />
+                        <dron nombre="4" accion="Atrás (H2P1)" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="20">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="3" accion="Fin" />
+                        <dron nombre="4" accion="Regar" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="21">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Atrás (H4P2)" />
+                        <dron nombre="3" accion="Fin" />
+                        <dron nombre="4" accion="Fin" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="22">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Atrás (H4P1)" />
+                        <dron nombre="3" accion="Fin" />
+                        <dron nombre="4" accion="Fin" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="23">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Regar" />
+                        <dron nombre="3" accion="Fin" />
+                        <dron nombre="4" accion="Fin" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="24">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Fin" />
+                        <dron nombre="3" accion="Fin" />
+                        <dron nombre="4" accion="Fin" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                </instrucciones>
+            </plan>
+            <plan nombre="Viernes">
+                <tiempoOptimoSegundos>21</tiempoOptimoSegundos>
+                <aguaRequeridaLitros>18</aguaRequeridaLitros>
+                <fertilizanteRequeridoGramos>2050</fertilizanteRequeridoGramos>
+                <eficienciaDronesRegadores>
+                    <dron nombre="1" litrosAgua="4" gramosFertilizante="200" />
+                    <dron nombre="2" litrosAgua="4" gramosFertilizante="800" />
+                    <dron nombre="3" litrosAgua="2" gramosFertilizante="50" />
+                    <dron nombre="4" litrosAgua="4" gramosFertilizante="800" />
+                    <dron nombre="5" litrosAgua="4" gramosFertilizante="200" />
+                </eficienciaDronesRegadores>
+                <instrucciones>
+                    <tiempo segundos="1">
+                        <dron nombre="4" accion="Adelante (H2P1)" />
+                    </tiempo>
+                    <tiempo segundos="2">
+                        <dron nombre="4" accion="Regar" />
+                    </tiempo>
+                    <tiempo segundos="3">
+                        <dron nombre="5" accion="Adelante (H1P1)" />
+                    </tiempo>
+                    <tiempo segundos="4">
+                        <dron nombre="5" accion="Adelante (H1P2)" />
+                    </tiempo>
+                    <tiempo segundos="5">
+                        <dron nombre="5" accion="Regar" />
+                    </tiempo>
+                    <tiempo segundos="6">
+                        <dron nombre="2" accion="Adelante (H4P1)" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="7">
+                        <dron nombre="2" accion="Regar" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="8">
+                        <dron nombre="3" accion="Adelante (H3P1)" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="9">
+                        <dron nombre="3" accion="Regar" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="10">
+                        <dron nombre="1" accion="Adelante (H5P1)" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="11">
+                        <dron nombre="1" accion="Adelante (H5P2)" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="12">
+                        <dron nombre="1" accion="Regar" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="13">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="4" accion="Adelante (H2P2)" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="14">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="4" accion="Adelante (H2P3)" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="15">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="4" accion="Regar" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="16">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Adelante (H4P2)" />
+                        <dron nombre="4" accion="Fin" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="17">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Adelante (H4P3)" />
+                        <dron nombre="4" accion="Fin" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="18">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Regar" />
+                        <dron nombre="4" accion="Fin" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="19">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Fin" />
+                        <dron nombre="3" accion="Adelante (H3P2)" />
+                        <dron nombre="4" accion="Fin" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="20">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Fin" />
+                        <dron nombre="3" accion="Adelante (H3P3)" />
+                        <dron nombre="4" accion="Fin" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="21">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Fin" />
+                        <dron nombre="3" accion="Regar" />
+                        <dron nombre="4" accion="Fin" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                    <tiempo segundos="22">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Fin" />
+                        <dron nombre="3" accion="Fin" />
+                        <dron nombre="4" accion="Fin" />
+                        <dron nombre="5" accion="Fin" />
+                    </tiempo>
+                </instrucciones>
+            </plan>
+        </invernadero>
+        <invernadero nombre="Invernadero Quetzaltenango">
+            <plan nombre="Plan Final">
+                <tiempoOptimoSegundos>60</tiempoOptimoSegundos>
+                <aguaRequeridaLitros>74</aguaRequeridaLitros>
+                <fertilizanteRequeridoGramos>6475</fertilizanteRequeridoGramos>
+                <eficienciaDronesRegadores>
+                    <dron nombre="1" litrosAgua="24" gramosFertilizante="2400" />
+                    <dron nombre="2" litrosAgua="35" gramosFertilizante="2825" />
+                    <dron nombre="3" litrosAgua="15" gramosFertilizante="1250" />
+                </eficienciaDronesRegadores>
+                <instrucciones>
+                    <tiempo segundos="1">
+                        <dron nombre="1" accion="Adelante (H1P1)" />
+                    </tiempo>
+                    <tiempo segundos="2">
+                        <dron nombre="1" accion="Regar" />
+                    </tiempo>
+                    <tiempo segundos="3">
+                        <dron nombre="2" accion="Adelante (H2P1)" />
+                    </tiempo>
+                    <tiempo segundos="4">
+                        <dron nombre="2" accion="Regar" />
+                    </tiempo>
+                    <tiempo segundos="5">
+                        <dron nombre="3" accion="Adelante (H3P1)" />
+                    </tiempo>
+                    <tiempo segundos="6">
+                        <dron nombre="3" accion="Regar" />
+                    </tiempo>
+                    <tiempo segundos="7">
+                        <dron nombre="1" accion="Adelante (H1P2)" />
+                    </tiempo>
+                    <tiempo segundos="8">
+                        <dron nombre="1" accion="Regar" />
+                    </tiempo>
+                    <tiempo segundos="9">
+                        <dron nombre="2" accion="Adelante (H2P2)" />
                     </tiempo>
                     <tiempo segundos="10">
                         <dron nombre="2" accion="Regar" />
                     </tiempo>
                     <tiempo segundos="11">
-                        <dron nombre="4" accion="Adelante (H2P3)" />
+                        <dron nombre="3" accion="Adelante (H3P2)" />
                     </tiempo>
                     <tiempo segundos="12">
-                        <dron nombre="4" accion="Regar" />
+                        <dron nombre="3" accion="Regar" />
                     </tiempo>
                     <tiempo segundos="13">
-                        <dron nombre="2" accion="Adelante (H1P4)" />
+                        <dron nombre="1" accion="Adelante (H1P3)" />
                     </tiempo>
                     <tiempo segundos="14">
-                        <dron nombre="2" accion="Regar" />
+                        <dron nombre="1" accion="Regar" />
                     </tiempo>
                     <tiempo segundos="15">
-                        <dron nombre="4" accion="Adelante (H2P4)" />
+                        <dron nombre="2" accion="Adelante (H2P3)" />
                     </tiempo>
                     <tiempo segundos="16">
-                        <dron nombre="4" accion="Regar" />
-                    </tiempo>
-                    <tiempo segundos="17">
-                        <dron nombre="2" accion="Adelante (H1P5)" />
-                    </tiempo>
-                    <tiempo segundos="18">
                         <dron nombre="2" accion="Regar" />
                     </tiempo>
+                    <tiempo segundos="17">
+                        <dron nombre="3" accion="Adelante (H3P3)" />
+                    </tiempo>
+                    <tiempo segundos="18">
+                        <dron nombre="3" accion="Regar" />
+                    </tiempo>
                     <tiempo segundos="19">
-                        <dron nombre="4" accion="Adelante (H2P5)" />
+                        <dron nombre="1" accion="Adelante (H1P4)" />
                     </tiempo>
                     <tiempo segundos="20">
-                        <dron nombre="4" accion="Regar" />
+                        <dron nombre="1" accion="Regar" />
                     </tiempo>
                     <tiempo segundos="21">
-                        <dron nombre="2" accion="Adelante (H1P6)" />
+                        <dron nombre="2" accion="Adelante (H2P4)" />
                     </tiempo>
                     <tiempo segundos="22">
                         <dron nombre="2" accion="Regar" />
                     </tiempo>
                     <tiempo segundos="23">
-                        <dron nombre="4" accion="Adelante (H2P6)" />
+                        <dron nombre="3" accion="Adelante (H3P4)" />
                     </tiempo>
                     <tiempo segundos="24">
-                        <dron nombre="4" accion="Regar" />
+                        <dron nombre="3" accion="Regar" />
                     </tiempo>
                     <tiempo segundos="25">
-                        <dron nombre="2" accion="Adelante (H1P7)" />
+                        <dron nombre="1" accion="Adelante (H1P5)" />
                     </tiempo>
                     <tiempo segundos="26">
-                        <dron nombre="2" accion="Regar" />
+                        <dron nombre="1" accion="Regar" />
                     </tiempo>
                     <tiempo segundos="27">
-                        <dron nombre="4" accion="Adelante (H2P7)" />
+                        <dron nombre="2" accion="Adelante (H2P5)" />
                     </tiempo>
                     <tiempo segundos="28">
-                        <dron nombre="4" accion="Regar" />
-                    </tiempo>
-                    <tiempo segundos="29">
-                        <dron nombre="2" accion="Adelante (H1P8)" />
-                    </tiempo>
-                    <tiempo segundos="30">
                         <dron nombre="2" accion="Regar" />
                     </tiempo>
+                    <tiempo segundos="29">
+                        <dron nombre="3" accion="Adelante (H3P5)" />
+                    </tiempo>
+                    <tiempo segundos="30">
+                        <dron nombre="3" accion="Regar" />
+                    </tiempo>
                     <tiempo segundos="31">
-                        <dron nombre="4" accion="Adelante (H2P8)" />
+                        <dron nombre="1" accion="Adelante (H1P6)" />
                     </tiempo>
                     <tiempo segundos="32">
-                        <dron nombre="4" accion="Regar" />
+                        <dron nombre="1" accion="Regar" />
                     </tiempo>
                     <tiempo segundos="33">
-                        <dron nombre="2" accion="Adelante (H1P9)" />
+                        <dron nombre="2" accion="Adelante (H2P6)" />
                     </tiempo>
                     <tiempo segundos="34">
                         <dron nombre="2" accion="Regar" />
                     </tiempo>
                     <tiempo segundos="35">
-                        <dron nombre="4" accion="Adelante (H2P9)" />
+                        <dron nombre="3" accion="Adelante (H3P6)" />
                     </tiempo>
                     <tiempo segundos="36">
-                        <dron nombre="4" accion="Regar" />
+                        <dron nombre="3" accion="Regar" />
                     </tiempo>
                     <tiempo segundos="37">
-                        <dron nombre="2" accion="Adelante (H1P10)" />
+                        <dron nombre="1" accion="Adelante (H1P7)" />
                     </tiempo>
                     <tiempo segundos="38">
-                        <dron nombre="2" accion="Regar" />
+                        <dron nombre="1" accion="Regar" />
                     </tiempo>
                     <tiempo segundos="39">
-                        <dron nombre="2" accion="Fin" />
-                        <dron nombre="4" accion="Adelante (H2P10)" />
+                        <dron nombre="2" accion="Adelante (H2P7)" />
                     </tiempo>
                     <tiempo segundos="40">
-                        <dron nombre="2" accion="Fin" />
-                        <dron nombre="4" accion="Regar" />
+                        <dron nombre="2" accion="Regar" />
                     </tiempo>
                     <tiempo segundos="41">
+                        <dron nombre="3" accion="Adelante (H3P7)" />
+                    </tiempo>
+                    <tiempo segundos="42">
+                        <dron nombre="3" accion="Regar" />
+                    </tiempo>
+                    <tiempo segundos="43">
+                        <dron nombre="1" accion="Adelante (H1P8)" />
+                    </tiempo>
+                    <tiempo segundos="44">
+                        <dron nombre="1" accion="Regar" />
+                    </tiempo>
+                    <tiempo segundos="45">
+                        <dron nombre="2" accion="Adelante (H2P8)" />
+                    </tiempo>
+                    <tiempo segundos="46">
+                        <dron nombre="2" accion="Regar" />
+                    </tiempo>
+                    <tiempo segundos="47">
+                        <dron nombre="3" accion="Adelante (H3P8)" />
+                    </tiempo>
+                    <tiempo segundos="48">
+                        <dron nombre="3" accion="Regar" />
+                    </tiempo>
+                    <tiempo segundos="49">
+                        <dron nombre="1" accion="Adelante (H1P9)" />
+                    </tiempo>
+                    <tiempo segundos="50">
+                        <dron nombre="1" accion="Regar" />
+                    </tiempo>
+                    <tiempo segundos="51">
+                        <dron nombre="2" accion="Adelante (H2P9)" />
+                    </tiempo>
+                    <tiempo segundos="52">
+                        <dron nombre="2" accion="Regar" />
+                    </tiempo>
+                    <tiempo segundos="53">
+                        <dron nombre="3" accion="Adelante (H3P9)" />
+                    </tiempo>
+                    <tiempo segundos="54">
+                        <dron nombre="3" accion="Regar" />
+                    </tiempo>
+                    <tiempo segundos="55">
+                        <dron nombre="1" accion="Adelante (H1P10)" />
+                    </tiempo>
+                    <tiempo segundos="56">
+                        <dron nombre="1" accion="Regar" />
+                    </tiempo>
+                    <tiempo segundos="57">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Adelante (H2P10)" />
+                    </tiempo>
+                    <tiempo segundos="58">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Regar" />
+                    </tiempo>
+                    <tiempo segundos="59">
+                        <dron nombre="1" accion="Fin" />
                         <dron nombre="2" accion="Fin" />
-                        <dron nombre="4" accion="Fin" />
+                        <dron nombre="3" accion="Adelante (H3P10)" />
+                    </tiempo>
+                    <tiempo segundos="60">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Fin" />
+                        <dron nombre="3" accion="Regar" />
+                    </tiempo>
+                    <tiempo segundos="61">
+                        <dron nombre="1" accion="Fin" />
+                        <dron nombre="2" accion="Fin" />
+                        <dron nombre="3" accion="Fin" />
                     </tiempo>
                 </instrucciones>
             </plan>
