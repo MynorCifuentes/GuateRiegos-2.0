@@ -132,7 +132,7 @@ class SimuladorRiego:
         </tr>
     </thead>
     <tbody>
-    {% set t = 1 %}
+    {% se t = 1 %}
     {% for fila in instrucciones %}
         <tr>
             <td>{{ t }}</td>
@@ -251,3 +251,4 @@ Consulta la [documentación online en GitHub](https://github.com/MynorCifuentes/
 
 Para reportar errores o sugerencias puedes hacerlos a través de los issues del repositorio:
 [Issues GuateRiegos 2.0](https://github.com/MynorCifuentes/IPC2_Proyecto2_201318644/issues).
+
