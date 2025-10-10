@@ -1,6 +1,3 @@
----
-layout: double-column
----
 
 # Resumen
 
@@ -215,4 +212,5 @@ GuateRiegos 2.0 constituye un avance sustancial en la gestión agrícola, integr
 2. Graphviz: https://graphviz.gitlab.io/
 3. Proyecto GuateRiegos 2.0, Mynor Cifuentes, https://github.com/MynorCifuentes/IPC2_Proyecto2_201318644
 4. Manual Técnico y Manual de Usuario de GuateRiegos 2.0.
+
 5. Reportes HTML, Diagramas de Clases y de Actividad generados por el sistema.
