@@ -165,7 +165,7 @@ class SimuladorRiego:
                 actual_paso2 = actual_paso2.siguiente
             actual_estado = actual_estado.siguiente
 
-        # 6. Simulación "tick por tick"
+        # 6. Paso a paso del simulador
         tiempo = 1
         # Para saber si cada dron terminó
         drones_fin = ListaSimple()
@@ -222,8 +222,8 @@ class SimuladorRiego:
                             if estadistica:
                                 estadistica.litros_agua += litros_totales
                                 estadistica.gramos_fertilizante += gramos_fert
-                        # Avanza el riego global solo si se ejecutó
-                        # Elimina acción riego realizada
+                        # Avanza el riego global solo si se ejecutó el rieg
+                        # Elmina acción riego realizada
                         estado.acciones.primero = estado.acciones.primero.siguiente
                         # Avanza el nodo global de riego
                         riego_global = riego_global.siguiente
@@ -247,7 +247,7 @@ class SimuladorRiego:
             if todos_fin:
                 break
 
-        # Copia estadísticas
+        # Copia estadísticas finales 
         self.estadisticas = ListaSimple()
         actual = estadisticas_dron.primero
         while actual:

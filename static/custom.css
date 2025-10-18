@@ -38,7 +38,19 @@
   color: #212529 !important; /* corrige la letras blancas*/
 }
 
-.dron-regando { background-color: #cce5ff; border: 2px solid #007bff; }
-.dron-moviendo { background-color: #e6ffe6; border: 2px solid #28a745; }
-.dron-esperando { background-color: #fff3cd; border: 2px solid #ffc107; }
-.dron-fin { background-color: #f2f2f2; border: 2px solid #888; }
+.dron-regando { 
+  background-color: #cce5ff; 
+  border: 2px solid #007bff; 
+}
+.dron-moviendo { 
+  background-color: #e6ffe6; 
+  border: 2px solid #28a745; 
+}
+.dron-esperando { 
+  background-color: #fff3cd; 
+  border: 2px solid #ffc107; 
+}
+.dron-fin { 
+  background-color: #f2f2f2; 
+  border: 2px solid #888; 
+}

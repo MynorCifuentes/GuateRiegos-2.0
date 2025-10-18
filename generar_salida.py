@@ -2,7 +2,7 @@ def generar_salida_xml(gestor, nombre_archivo="salida.xml"):
     from SimuladorRiego import SimuladorRiego
 
     def escape(s):
-        return str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
+        return str(s).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;") # PARA CARACTERES ESPECIALES
 
     xml = '<?xml version="1.0" encoding="UTF-8" ?>\n<datosSalida>\n    <listaInvernaderos>\n'
     actual_inv = gestor.invernaderos.primero
@@ -37,7 +37,7 @@ def generar_salida_xml(gestor, nombre_archivo="salida.xml"):
                 actual_est = actual_est.siguiente
             xml += '                </eficienciaDronesRegadores>\n'
 
-            # Instrucciones por tiempo: SOLO DRONES ACTIVOS EN CADA TIEMPO
+            # Instrucciones por tiempo: SOLO DRONES ACTIVOS EN CADA TIEMPO CON ESTO YA MODIFICO EL TIEMPO PARA CADA UNO
             xml += '                <instrucciones>\n'
             actual_tiempo = simulador.instrucciones_por_tiempo.primero
             t = 1
