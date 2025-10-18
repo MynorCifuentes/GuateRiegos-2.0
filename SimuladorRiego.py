@@ -37,7 +37,7 @@ class SimuladorRiego:
         self.tiempo_total = 0
 
     def simular(self):
-        # Lista de pares hilera-dron (no dict nativo)
+        # Lista de pares hilera-dron
         lista_hilera_dron = ListaSimple()
         asignacion_actual = self.invernadero.asignacion_drones.primero
         while asignacion_actual:
