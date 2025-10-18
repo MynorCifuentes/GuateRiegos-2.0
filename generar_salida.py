@@ -45,6 +45,7 @@ def generar_salida_xml(gestor, nombre_archivo="salida.xml"):
                 fila = actual_tiempo.dato
                 actual_accion = fila.primero
                 hay_accion = False
+
                 # Primer barrido: verificar si al menos un dron tiene acción distinta de "Esperar" o está en "Fin"
                 tmp_accion = fila.primero
                 while tmp_accion:
@@ -61,8 +62,10 @@ def generar_salida_xml(gestor, nombre_archivo="salida.xml"):
                         dron_id, accion = actual_accion.dato
                         accion_norm = accion.strip().lower()
                         if accion_norm != "esperar" and accion_norm != "":
-                            # Normaliza cualquier variante de "fin"
-                            if accion_norm == "fin":
+                            # Si la acción es de riego por litro, se muestra tal cual
+                            if accion_norm.startswith("regar"):
+                                accion_xml = accion
+                            elif accion_norm == "fin":
                                 accion_xml = "Fin"
                             else:
                                 accion_xml = accion

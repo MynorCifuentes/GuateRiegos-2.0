@@ -41,7 +41,9 @@
             <tr>
                 <td>{{ t }}</td>
                 {% for accion in fila %}
-                    <td>{{ accion[1] }}</td>
+                    <td class="{% if accion[1].startswith('Regar') %}dron-regando{% elif 'Adelante' in accion[1] or 'Atrás' in accion[1] %}dron-moviendo{% elif accion[1] == 'Esperar' %}dron-esperando{% elif accion[1] == 'FIN' %}dron-fin{% endif %}">
+                        {{ accion[1] }}
+                    </td>
                 {% endfor %}
             </tr>
             {% set t = t + 1 %}
